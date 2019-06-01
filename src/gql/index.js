@@ -1,48 +1,56 @@
-export default ({ query, variables = null, token = null, locale = "en", __debug = true }) => {
-  const method = "POST"
-  // TODO: should come from class probably as configuration
-  const url = "https://api.covergo.com/graphql"
+import fetch from 'cross-fetch'
 
-  // If no query, return
-  if (!query) console.error("There was no query to send")
+export default async ({ query, variables = null, token = '', locale = "en", __debug = true } = {}) => {
 
-  let json = JSON.stringify({ query, variables })
+  try {
+    const method = "POST"
+    // TODO: should come from class probably as configuration
+    const url = "https://api.covergo.com/graphql"
+  
+    // If no query, return
+    if (!query) console.error("There was no query to send");
+    //   throw new Error('There was no query to send')
+    // }
+  
+    let json = JSON.stringify({ query, variables })
+  
+    const options = {
+      method: "post",
+  
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": locale,
+        "Authorization": `Bearer ${token}`
+      },
+      body: json
+    }  
 
-  return new Promise(function(resolve) {
-    let r = new XMLHttpRequest()
-    r.open(method, url)
-    r.onreadystatechange = function() {
-      if (r.readyState === XMLHttpRequest.DONE) {
-        if (r.status >= 200 && r.status <= 404) {
-          const res = JSON.parse(r.responseText)
+    let res = await fetch(url, options)
 
-          if (__debug) {
-            console.group("%cCalling CoverGo API", "background: #03aeef; color: white; font-weight: bold; padding: 2px 4px; font-family: monospace;")
+    /* istanbul ignore next */
+    if (__debug) {
+      console.group("%cCalling CoverGo API", "background: #03aeef; color: white; font-weight: bold; padding: 2px 4px; font-family: monospace;")
+      
+      console.log({ query })
+      console.log({ variables })
+      if (res.errors) console.log("%cThere is an error here!", "color: #CE0528; font-weight: bold;")
 
-            console.log({ query })
-            console.log({ variables })
-            console.log(res)
-            if (res.errors) console.log("%cThere is an error here!", "color: #CE0528; font-weight: bold;")
+      // Stringified query and variables
+      console.groupCollapsed("> Stringified")
+      // console.log(query + "\n" + JSON.stringify(variables))
+      console.groupEnd()
 
-            // Stringified query and variables
-            console.groupCollapsed("> Stringified")
-            console.log(query + "\n" + JSON.stringify(variables))
-            console.groupEnd()
-
-            console.groupEnd()
-          }
-          // Resolve
-          resolve(res)
-        } else resolve({ errors: [{ message: "Network error from GQL" }] })
-      }
+      console.groupEnd()
     }
 
-    // Set headers
-    r.setRequestHeader("Content-type", "application/json")
-    r.setRequestHeader("Accept-Language", `${locale}`)
-    if (token) r.setRequestHeader("Authorization", `Bearer ${token}`)
+    /* istanbul ignore next */
+    if (res.status >= 400) {
+      throw new Error('Network error from GQL')
+    }
 
-    // Run
-    r.send(json)
-  })
+    return await res.json()
+
+  } catch (err) {
+    return { errors: [{ message: err }] }
+  }
 }

@@ -1,5 +1,5 @@
 import gql from './gql';
-import { benefitCategories, login, singleProduct, productListing, checkoutConfig } from './queries'
+import { benefitCategories, login, singleProduct, productListing, checkoutConfig, createIndividual } from './queries'
 import { singleProductVariables, multiproductvariables } from '../mock/index.mockArgs'
 
 let token
@@ -42,7 +42,7 @@ describe('queries', () => {
   it('should return a list of products', async () => {
     expect.assertions(1)
     const variables = multiproductvariables
-    const res = await productListing({__debug: true, token, variables})
+    const res = await productListing({__debug, token, variables})
     expect(res).toHaveProperty('data.products')
   })
 
@@ -58,5 +58,36 @@ describe('queries', () => {
     const query = `query{}`
     const res = await gql({query, __debug})
     expect(res).toHaveProperty('errors')
+  })
+})
+
+describe('Entity Creation', () => {
+  let individualId
+  afterAll(async () => {
+    console.log('individualId', individualId)
+    if (individualId) {
+      const query = `mutation {
+        deleteEntity(id: "${individualId}"){
+          errors
+          errors_2{
+            code
+            message
+          }
+          status
+        }
+      }`
+      let res = await gql({query, variables: {}, token, __debug: true})
+      console.log(res.errors, res.errors_2, res.data)
+    } else {
+      return new Promise('done')
+    }
+  })
+  it('should create an Individual', async () => {
+    expect.assertions(1)
+    const variables = {createIndividualInput:{englishFirstName:"AlexTest", englishLastName:"LastNameTest"}}
+    const res = await createIndividual({variables, token, __debug})
+    console.log('createIndividualRes', JSON.stringify(res.data, null, 2))
+    individualId = res.data.createIndividual.createdStatus.id
+    expect(res.data.createIndividual.status).toBe('success')
   })
 })

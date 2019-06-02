@@ -1,3 +1,5 @@
+import gql from '../gql'
+
 const query = /* GraphQL */ `
 mutation createObject($createObjectInput: createObjectInput!){
   createObject(createObjectInput: $createObjectInput){
@@ -9,3 +11,5 @@ mutation createObject($createObjectInput: createObjectInput!){
   }
 }
 `
+
+export const createObject = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})

@@ -1,6 +1,7 @@
-import gql from './gql';
-import { benefitCategories, login, singleProduct, productListing, checkoutConfig, createIndividual } from './queries'
-import { singleProductVariables, multiproductvariables } from '../mock/index.mockArgs'
+import { gql } from './gql';
+import { benefitCategories, login, productListing, checkoutConfig, createIndividual } from './atomicQueries'
+import { singleProductVariables, multiproductvariables } from '../test/mockArgs'
+import { singleProduct } from './atomicQueries/singleProduct'
 
 let token
 const __debug = false
@@ -56,7 +57,7 @@ describe('queries', () => {
 
   it('should return errors for malformed queries', async () => {
     const query = `query{}`
-    const res = await gql({query, __debug})
+    const res = await gql``({__debug})
     expect(res).toHaveProperty('errors')
   })
 })
@@ -64,7 +65,6 @@ describe('queries', () => {
 describe('Entity Creation', () => {
   let individualId
   afterAll(async () => {
-    console.log('individualId', individualId)
     if (individualId) {
       const query = `mutation {
         deleteEntity(id: "${individualId}"){
@@ -77,7 +77,6 @@ describe('Entity Creation', () => {
         }
       }`
       let res = await gql({query, variables: {}, token, __debug: true})
-      console.log(res.errors, res.errors_2, res.data)
     } else {
       return new Promise('done')
     }
@@ -86,7 +85,6 @@ describe('Entity Creation', () => {
     expect.assertions(1)
     const variables = {createIndividualInput:{englishFirstName:"AlexTest", englishLastName:"LastNameTest"}}
     const res = await createIndividual({variables, token, __debug})
-    console.log('createIndividualRes', JSON.stringify(res.data, null, 2))
     individualId = res.data.createIndividual.createdStatus.id
     expect(res.data.createIndividual.status).toBe('success')
   })

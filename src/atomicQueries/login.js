@@ -1,6 +1,6 @@
-import gql from '../gql'
+import { gql } from '../gql'
 
-const query = /* GraphQL */ `
+const login = gql`
   query login($tenantId: String!, $clientId: String!, $username: String!, $password: String!){
     token_2(tenantId: $tenantId, clientId: $clientId, username: $username, password: $password) {
       accessToken
@@ -10,4 +10,4 @@ const query = /* GraphQL */ `
   }
 `
 
-export const login = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { login }

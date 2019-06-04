@@ -1,15 +1,25 @@
-import gql from '../gql'
+import { gql } from '../gql'
+import { PricesFragment } from './fragments/pricesOnProduct'
+/**
+ * This should be used for product listing for single layout as well as for product detail
+ * Will fetch products using benefitGraph field + will fetch benefitInfos
+ * From this query client can compose benefitTree with naming coming from benefitInfos
+ * BenefitGraph goes 3 layers down only
+ */
 
-const query = /* GraphQL */ `
-  query checkout(
+const singleProduct = gql`
+  query single(
     $where: productWhereInput
+    $productTypes: [String]
     $values:[keyValueInput]
     $discountCodes: [String]
     $benefitOptions: [benefitOptionInput]
 
     $hasAdvisorId: Boolean = false
+    # TODO: tenantID should be removed after we factor out benefitInfos
+    $tenantId: String = "vhis_uat"
     ) {
-    products_2(where:$where values:$values) {
+    products: products_2(where:$where values:$values) {
       list {
         name
         productId{
@@ -17,23 +27,20 @@ const query = /* GraphQL */ `
           type
           version
         }
-        pricing(values: $values discountCodes: $discountCodes benefitOptions: $benefitOptions){
-          formattedPrice
-          originalPrice
-          appliedDiscounts {
-            code
-            originalPrice
-            formattedOriginalPrice
-          }
-          amount
-          currencyCode
-
-          indicativePrices @include(if: $hasAdvisorId) {
-            type
-            amount
-            formattedPrice
+        ...Prices
+        insurer {
+          name
+          logoUrls{
+            typeC
           }
         }
+        majorExclusions
+        importantNotes
+        termsAndConditionsUrl
+        applicationFormUrl
+        enrollmentUrl
+        brochureUrl
+        premiumTableUrl
         benefitGraph {
           typeId
           value
@@ -87,46 +94,24 @@ const query = /* GraphQL */ `
             }
           }
         }
-        checkoutConfig {
-          meta
-          fields {
-            actions {
-              on
-              payload
-              targetId
-              type
-              values
-            }
-            autocomplete
-            cssClass
-            id
-            mapTos {
-              defaultValue
-              key
-              mapTo
-            }
-            options {
-              name
-              value
-            }
-            props
-            text {
-              headline
-              subheadline
-              placeholder
-            }
-            type
-            validation
-            initialValue
-          }
-          sections {
-            fieldIds
-            id
-          }
-        }
       }
     }
+    benefitInfos (tenantId: $tenantId productTypes: $productTypes){
+      name
+      description
+      type
+      typeId
+    }
+    benefitCategories(productTypes: $productTypes) {
+      categories {
+        name
+        id
+        description
+        benefitTypeIds
+      }
+      productType
+    }
   }
+  ${PricesFragment}
 `
-
-export const checkoutConfig = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { singleProduct }

@@ -1,6 +1,6 @@
-import gql from '../gql'
+import { gql } from '../gql'
 
-const query = /* GraphQL */ `
+const createIndividual = gql`
 mutation createIndividual($createIndividualInput: createIndividualInput!) {
   createIndividual(createIndividualInput:$createIndividualInput ){
     createdStatus{
@@ -12,4 +12,4 @@ mutation createIndividual($createIndividualInput: createIndividualInput!) {
 }
 `
 
-export const createIndividual = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { createIndividual }

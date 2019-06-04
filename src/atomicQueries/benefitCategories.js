@@ -1,6 +1,6 @@
-import gql from '../gql'
+import { gql } from '../gql'
 
-const query = /* GraphQL */ `
+const benefitCategories = gql`
   query benefitCategories($productTypes: [String]){
     benefitCategories(productTypes: $productTypes){
       categories{
@@ -13,4 +13,4 @@ const query = /* GraphQL */ `
   }
 `
 
-export const benefitCategories = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { benefitCategories }

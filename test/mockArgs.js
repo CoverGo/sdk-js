@@ -166,6 +166,7 @@ const mockIssuanceObject = {
           values: null // some additional info about the relationship
         }
       ],
+      
       /**
        * Follows API schema
        */

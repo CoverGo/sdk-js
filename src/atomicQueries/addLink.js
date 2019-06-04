@@ -1,4 +1,6 @@
-const query = /* GraphQL */ `
+import { gql } from '../gql'
+
+const addLink = gql`
   mutation addLink($linkInput: createLinkInput!){
     addLink(linkInput: $linkInput) {
       status
@@ -6,3 +8,5 @@ const query = /* GraphQL */ `
     }
   }
 `
+
+export { addLink }

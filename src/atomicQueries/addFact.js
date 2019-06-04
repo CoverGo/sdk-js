@@ -1,4 +1,6 @@
-export const addFact = /* GraphQL */ `
+import { gql } from '../gql'
+
+const addFact = gql`
   mutation addFact($entityId: String! $factInput: addFactInput!){
     addFact(entityId: $entityId factInput: $factInput){
       errors
@@ -6,3 +8,5 @@ export const addFact = /* GraphQL */ `
     }
   }
 `
+
+export { addFact }

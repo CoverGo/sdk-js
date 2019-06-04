@@ -1,4 +1,6 @@
-const query = /* GraphQL */ `
+import { gql } from '../gql'
+
+const initializePolicy = gql`
 mutation initializePolicy($policy: initializePolicyInput){
   initializePolicy(policy: $policy){
     status
@@ -8,3 +10,5 @@ mutation initializePolicy($policy: initializePolicyInput){
     }
   }
 }`
+
+export { initializePolicy }

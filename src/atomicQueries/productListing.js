@@ -1,14 +1,15 @@
-import gql from '../gql'
+import { gql } from '../gql'
 import { ProductFragment } from './fragments/productOnProduct'
 /**
  * This should be used for product listing page where there is more products
  * Will fetch product with benefitGraph - only one layer
  */
 
-const query = /* GraphQL */ `
+const productListing = gql`
   query listing(
+    # TODO: tenantID should be removed after we factor out benefitInfos
     $tenantId: String = "vhis_uat"
-    $clientId: String
+    
     $where: productWhereInput
     $productTypes: [String]
     $values:[keyValueInput]
@@ -35,12 +36,12 @@ const query = /* GraphQL */ `
         ...Product
       }
     }
-    benefitInfos (tenantId: $tenantId clientId: $clientId productTypes: $productTypes){
+    benefitInfos (tenantId: $tenantId productTypes: $productTypes){
       name
       type
       typeId
     }
-    insurers (tenantId: $tenantId productTypes: $productTypes) {
+    insurers (productTypes: $productTypes) {
       name
       detailedName
       id
@@ -49,4 +50,4 @@ const query = /* GraphQL */ `
   ${ProductFragment}
 `
 
-export const productListing = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { productListing }

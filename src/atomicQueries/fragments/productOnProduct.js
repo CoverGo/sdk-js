@@ -1,8 +1,4 @@
-import { TagsFragment } from './tagsOnProduct'
-import { ScoresFragment } from './scoresOnProduct'
-import { PricesFragment } from './pricesOnProduct'
-import { BenefitsFragment } from './benefitsOnProduct'
-import { InsurerFragment } from './insurerOnProduct'
+import { TagsFragment, ScoresFragment, PricesFragment, BenefitsFragment, InsurerFragment } from "./";
 
 const ProductFragment = /* GraphQL */ `
   fragment Product on product {

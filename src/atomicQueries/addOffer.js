@@ -1,4 +1,6 @@
-const query = /* GraphQL */ `
+import { gql } from '../gql'
+
+const addOffer = gql`
 mutation addOffer($policyId: String! $offerInput: addOfferInput!){
   addOffer(policyId: $policyId offerInput: $offerInput){
     createdStatus {
@@ -9,3 +11,5 @@ mutation addOffer($policyId: String! $offerInput: addOfferInput!){
   }
 }
 `
+
+export { addOffer }

@@ -1,4 +1,6 @@
-const query = /* GraphQL */ `
+import { gql } from '../gql'
+
+const initializePayment = gql`
   mutation initPayment($paymentInput: initializePaymentInput!) {
     initializePayment(input: $paymentInput) {
       errors,
@@ -9,3 +11,5 @@ const query = /* GraphQL */ `
     }
   }
 `
+
+export { initializePayment }

@@ -25,4 +25,8 @@ export {
 
 export { batchAddLinks, batchCreateAllEntities, batchInitializePolicy } from './batchQueries'
 
-export default covergoSDK
+export { createPolicy, createQuote, getPrice, payAndIssuePolicy, validatePolicy } from './publicSDK'
+
+import { gql } from './gql'
+
+export default gql

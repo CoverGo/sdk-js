@@ -1,7 +1,7 @@
-import createIndividual from "../queries/createIndividual.js"
-import createObject from "../queries/createObject.js"
+import { createIndividual } from "../atomicQueries"
+import { createObject } from "../atomicQueries"
 
-export default async ({ payload, token, locale }) => {
+const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
   // console.log(payload, insuredObjects); 
   const res = await Promise.all([
@@ -62,3 +62,5 @@ export default async ({ payload, token, locale }) => {
     otherHolderIds,
   })
 }
+
+export { batchCreateAllEntities }

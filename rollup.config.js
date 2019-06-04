@@ -1,6 +1,5 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-import graphql from '@kocal/rollup-plugin-graphql';
 import resolve from 'rollup-plugin-node-resolve';
 import localResolve from 'rollup-plugin-local-resolve';
 import filesize from 'rollup-plugin-filesize';
@@ -29,7 +28,6 @@ const config = {
     },
   ],
   plugins: [
-    graphql(),
     globals(),
     builtins(),
     babel({ exclude: 'node_modules/**' }),

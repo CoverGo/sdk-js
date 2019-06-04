@@ -1,6 +1,6 @@
 import { addLink } from "../atomicQueries";
 
-export default async ({ payload, policyId, createdEntities, token, locale }) => {
+const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale }) => {
   // Connect all objects to holder
   const connectObjectsToHolder = payload.insuredObjects?.map((obj, i) =>
     addLink({ linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }, token, locale })
@@ -25,3 +25,5 @@ export default async ({ payload, policyId, createdEntities, token, locale }) => 
   if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
   return Promise.resolve(res)
 }
+
+export { batchAddLinks }

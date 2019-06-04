@@ -1,4 +1,4 @@
-import gql from '../gql'
+import { gql } from '../gql'
 
 const query = /* GraphQL */ `
   query validatePolicy ($policyId: String!) {

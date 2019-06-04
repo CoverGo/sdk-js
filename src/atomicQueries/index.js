@@ -12,26 +12,7 @@ export { initializePolicy } from "./initializePolicy";
 export { login } from './login'
 export { processPaymentAndIssue } from "./processPaymentAndIssue";
 export { productListing } from './productListing'
+export { getPrices } from './getPrices'
 export { singleProduct } from './singleProduct'
 export { upsertBenefitOption } from "./upsertBenefitOptions";
 export { validatePolicy } from "./validatePolicy";
-
-// export {
-//   addLink,
-//   addFact,
-//   addOffer,
-//   benefitCategories,
-//   checkoutConfig,
-//   convertOffer,
-//   createIndividual,
-//   createObject,
-//   deleteEntity,
-//   initializePayment,
-//   initializePolicy,
-//   login,
-//   processPaymentAndIssue,
-//   productListing,
-//   singleProduct,
-//   upsertBenefitOption,
-//   validatePolicy
-// }

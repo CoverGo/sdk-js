@@ -1,6 +1,6 @@
-import initializePolicy from "../atomicQueries"
+import { initializePolicy } from "../atomicQueries"
 
-export default async ({ payload, createdEntities, token, locale }) => {
+const batchInitializePolicy = async ({ payload, createdEntities, token, locale }) => {
   const { holderId, individualsIds, otherHolderIds = null,  objectsIds } = createdEntities
 
   // If policyHolder is one of insurers, add it to InsuredIds
@@ -62,3 +62,5 @@ export default async ({ payload, createdEntities, token, locale }) => {
   if (policyId.errors) return Promise.resolve({ errors: policyId.errors })
   return Promise.resolve(policyId)
 }
+
+export { batchInitializePolicy }

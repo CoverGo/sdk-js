@@ -1,4 +1,4 @@
-import gql from '../gql'
+import { gql } from '../gql'
 
 const query = /* GraphQL */ `
 mutation upsertBenefitOption($policyId: String! $input: benefitOptionInput!){

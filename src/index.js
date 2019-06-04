@@ -13,6 +13,7 @@ export {
   createIndividual,
   createObject,
   deleteEntity,
+  getPrices,
   initializePayment,
   initializePolicy,
   login,
@@ -25,7 +26,7 @@ export {
 
 export { batchAddLinks, batchCreateAllEntities, batchInitializePolicy } from './batchQueries'
 
-export { createPolicy, createQuote, getPrice, payAndIssuePolicy, validatePolicy } from './publicSDK'
+export { createPolicy, createQuote, payAndIssuePolicy } from './publicSDK'
 
 import { gql } from './gql'
 

@@ -1,6 +1,3 @@
-import { createPolicy } from './createPolicy'
-import { createQuote } from './createQuote'
-import { payAndIssuePolicy } from './payAndIssuePolicy'
-import { validatePolicy } from './validatePolicy'
-
-export { createPolicy, createQuote, payAndIssuePolicy, validatePolicy }
+export { createPolicy } from './createPolicy'
+export { createQuote } from './createQuote'
+export { payAndIssuePolicy } from './payAndIssuePolicy'

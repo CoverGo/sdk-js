@@ -7,7 +7,7 @@ import { PricesFragment } from './fragments/pricesOnProduct'
  * BenefitGraph goes 3 layers down only
  */
 
-const productsAndPrices = gql`
+const getPrices = gql`
   query single(
     $where: productWhereInput
     $values:[keyValueInput]
@@ -36,4 +36,4 @@ const productsAndPrices = gql`
   }
   ${PricesFragment}
 `
-export { productsAndPrices }
+export { getPrices }

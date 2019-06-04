@@ -1,4 +1,4 @@
-import { createPolicy } from "../atomicQueries";
+import { createPolicy } from "./";
 
 const createQuote = async ({ payload, token, locale }) => {
   // Create quote is actually create policy without pricing and product

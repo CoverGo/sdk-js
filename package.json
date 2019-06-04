@@ -1,5 +1,5 @@
 {
-  "name": "covergo-sdk",
+  "name": "@covergo/covergo-sdk",
   "version": "0.0.1",
   "description": "Covergo SDK for node and the browser",
   "keywords": [],

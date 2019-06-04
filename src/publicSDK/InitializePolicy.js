@@ -1,4 +1,4 @@
-import { batchCreateAllEntities, batchInitializePolicy, batchAddLinks } from "../batchQueries/";
+import { batchCreateAllEntities, batchInitializePolicy, batchAddLinks } from "../batchQueries";
 import { addOffer, convertOffer } from "../atomicQueries";
 
 const createPolicy = async ({

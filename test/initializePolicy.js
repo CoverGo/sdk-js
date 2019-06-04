@@ -9,7 +9,7 @@
  * @param {Boolean} shouldConvertOffer - defines which flow to run
  */
 
-import addLink from "./addLink";
+import addLink from "./atomicQueries";
 
 export default ({ input, shouldConvertOffer = true, token, locale }) => {
   return;

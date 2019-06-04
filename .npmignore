@@ -3,6 +3,7 @@ node_modules/**
 src/**
 test/**
 coverage/**
+__mocks__
 
 npm-debug.log
 commitlint.config.js

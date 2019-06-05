@@ -1,4 +1,5 @@
 import {fetch} from 'cross-fetch'
+// fix module dependencies
 
 const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = true} ={}) => {
   try {

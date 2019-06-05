@@ -23,6 +23,6 @@ export { batchAddLinks, batchCreateAllEntities, batchInitializePolicy } from './
 
 export { createPolicy, createQuote, payAndIssuePolicy } from './publicSDK'
 
-import { gql } from './gql'
+export { gql } from './gql'
 
-export default gql
+// export default gql

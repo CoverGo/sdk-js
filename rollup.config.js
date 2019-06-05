@@ -8,7 +8,7 @@ import localResolve from 'rollup-plugin-local-resolve';
 import builtins from 'rollup-plugin-node-builtins';
 // import { terser } from 'rollup-plugin-terser';
 // import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
-import pkg from './package.json'
+import pkg from './package.json';
 
 export default [
   {
@@ -17,7 +17,7 @@ export default [
     output: {
       name: 'covergo-sdk',
       file: pkg.browser,
-      format: 'umd'
+      format: 'umd',
     },
     plugins: [
       builtins(),
@@ -30,16 +30,16 @@ export default [
         browser: true,
         modulesOnly: true,
       }),
-      babel({ runtimeHelpers: true, exclude: ['node_modules/**']}),
-      commonjs()
-    ]
+      babel({ runtimeHelpers: true, exclude: ['node_modules/**'] }),
+      commonjs(),
+    ],
   },
   {
     input: 'src/index.js',
     external: ['cross-fetch'],
     output: [
       { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' }
+      { file: pkg.module, format: 'es' },
     ],
     plugins: [
       builtins(),
@@ -52,10 +52,10 @@ export default [
         browser: true,
         modulesOnly: true,
       }),
-      babel({ runtimeHelpers: true, exclude: ['node_modules/**'] })
-    ]
-  }
-]
+      babel({ runtimeHelpers: true, exclude: ['node_modules/**'] }),
+    ],
+  },
+];
 // const config = {
 //   input: 'src/index.js',
 //   output: [

@@ -13,6 +13,7 @@ import pkg from './package.json'
 export default [
   {
     input: 'src/index.js',
+    external: ['cross-fetch'],
     output: {
       name: 'covergo-sdk',
       file: pkg.browser,
@@ -20,8 +21,15 @@ export default [
     },
     plugins: [
       builtins(),
-      resolve(),
       localResolve(),
+      resolve({
+        module: true,
+        jsnext: true,
+        main: true,
+        preferBuiltins: true,
+        browser: true,
+        modulesOnly: true,
+      }),
       babel({ runtimeHelpers: true, exclude: ['node_modules/**']}),
       commonjs()
     ]
@@ -35,8 +43,15 @@ export default [
     ],
     plugins: [
       builtins(),
-      resolve(),
       localResolve(),
+      resolve({
+        module: true,
+        jsnext: true,
+        main: true,
+        preferBuiltins: true,
+        browser: true,
+        modulesOnly: true,
+      }),
       babel({ runtimeHelpers: true, exclude: ['node_modules/**'] })
     ]
   }

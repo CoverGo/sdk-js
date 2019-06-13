@@ -1,25 +1,38 @@
 const PricesFragment = /* GraphQL */ `
-  fragment Prices on product {
-    pricing(values: $values benefitOptions: $benefitOptions discountCodes: $discountCodes) {
-      formattedPrice
-      originalPrice
+	fragment Prices on product {
+		pricing(values: $values, benefitOptions: $benefitOptions, discountCodes: $discountCodes) {
+			formattedPrice
+			originalPrice
+			formattedOriginalPrice
+			amount
+			currencyCode
 
-      appliedDiscounts {
-        code
-        ratio
-        originalPrice
-        formattedOriginalPrice
-      }
+			appliedDiscounts {
+				code
+				ratio
+				flat
+				order
+				originalPrice
+				formattedOriginalPrice
+				formattedFlat
+			}
 
-      indicativePrices @include(if: $hasAdvisorId) {
-        type
-        amount
-        formattedPrice
-      }
+			appliedTaxes {
+				code
+				ratio
+				flat
+				order
+				originalPrice
+				formattedOriginalPrice
+				formattedFlat
+			}
 
-      amount
-      currencyCode
-    }
-  }
+			indicativePrices @include(if: $hasAdvisorId) {
+				type
+				amount
+				formattedPrice
+			}
+		}
+	}
 `
 export { PricesFragment }

@@ -1,5 +1,5 @@
 import { gql } from './gql';
-import { benefitCategories, login, productListing, checkoutConfig, createIndividual } from './atomicQueries'
+import { benefitCategories, login, productListing, checkoutConfig, createIndividual, getPrices } from './atomicQueries'
 import { singleProductVariables, multiproductvariables } from '../test/mockArgs'
 import { singleProduct } from './atomicQueries/singleProduct'
 
@@ -38,6 +38,15 @@ describe('queries', () => {
     const variables = singleProductVariables
     const res = await singleProduct({__debug, token, variables})
     expect(res).toHaveProperty('data.products')
+  })
+
+  it('should return prices for a single product', async () => {
+    expect.assertions(2)
+    const variables = singleProductVariables
+    const res = await getPrices({__debug, token, variables})
+    console.log(JSON.stringify(res.data.products.list[0]))
+    expect(res).toHaveProperty('data.products.list')
+    expect(res.data.products.list[0]).toHaveProperty('pricing')
   })
 
   it('should return a list of products', async () => {

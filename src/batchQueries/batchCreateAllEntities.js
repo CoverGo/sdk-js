@@ -5,8 +5,8 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
   // console.log(payload, insuredObjects); 
   const res = await Promise.all([
-    createIndividual({ variables: {individualInput: holder}, token, locale }),
-    ...insuredPeople.map(item => createIndividual({ variables: {individualInput: item}, token, locale })),
+    createIndividual({ variables: {createIndividualInput: holder}, token, locale }),
+    ...insuredPeople.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),
     ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale })),
   ])
 
@@ -39,7 +39,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
 
   // create otherHolders
   const createOtherHoldersResponse = await Promise.all([
-    ...additionalPolicyHolder.map(item => createIndividual({ variables: {individualInput: item}, token, locale }))
+    ...additionalPolicyHolder.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale }))
   ])
 
   if (createOtherHoldersResponse.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })

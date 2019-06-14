@@ -7,7 +7,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const res = await Promise.all([
     createIndividual({ variables: {individualInput: holder}, token, locale }),
     ...insuredPeople.map(item => createIndividual({ variables: {individualInput: item}, token, locale })),
-    ...insuredObjects.map(item => createObject({ variables: {objectInput: item}, token, locale })),
+    ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale })),
   ])
 
   // Check for errors

@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/CoverGo/sdk-js/compare/v1.1.3...v1.1.4) (2019-06-17)
+
+
+### Bug Fixes
+
+* **add-offer:** change quoteId to policyId and offerInput pricing ([2da3577](https://github.com/CoverGo/sdk-js/commit/2da3577))
+
 ## [1.1.3](https://github.com/CoverGo/sdk-js/compare/v1.1.2...v1.1.3) (2019-06-17)
 
 

@@ -58,12 +58,16 @@ const createPolicy = async ({
   const { productId, pricing } = variables.policyParticulars;
   const offerInput = {
     productId,
-    ...pricing && {premium: pricing} // pricing should be added to maptos from crm to allow overrides, but not from coverquote
+    premium: pricing
+    // ...pricing?.discountCodes && {premium: { discountCodes: pricing.discountCodes }} // pricing should be added to maptos from crm to allow overrides, but not from coverquote
   };
-  const res = await addOffer({ variables: {policyId, offerInput}, token, locale });
-  const createdOffer = res.data.addOffer.createdStatus.id
+  const createdOffer = await addOffer({ variables: {policyId, offerInput}, token, locale });
+  
   if (createdOffer.errors)
     return Promise.resolve({ errors: createdOffer.errors });
+
+  const offerId = createdOffer.data.addOffer.createdStatus.id
+  
   if (needsOfflineUnderwriting) return Promise.resolve({ policyId });
 
   // ------------------------------------------------------------
@@ -71,8 +75,8 @@ const createPolicy = async ({
   // ------------------------------------------------------------
   const convertedOffer = await convertOffer({
     variables: {
-      quoteId: policyId,
-      offerId: createdOffer
+      policyId,
+      offerId
     },
     token,
     locale

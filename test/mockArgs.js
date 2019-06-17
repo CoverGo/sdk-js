@@ -248,5 +248,175 @@ const mockIssuanceObject = {
   ]
 }
 
+const batchInitializePolicyVariables = {
+  policyParticulars: {
+    startDate: "2019-06-14T00:00:00.000Z",
+    endDate: "2020-06-13T00:00:00.000Z",
+    productId: {
+      plan: "chubb_myhomeguard_occupier_plana",
+      type: "home",
+      version: null
+    },
+    // pricing: {
+    //   amount: 665.4,
+    //   currencyCode: "HKD",
+    //   grossAmount: 665
+    // },
+    //  pricing should only be added if user has permission for overrideOffers (i.e. for crm, but not for coverQuote)
+    referralCode: null,
+    source: "COMPARISON",
+    benefitOptions: [],
+    values: [
+      {
+        key: "isOwner",
+        value: {
+          booleanValue: false
+        }
+      },
+      {
+        key: "isOccupier",
+        value: {
+          booleanValue: true
+        }
+      },
+      {
+        key: "insureds",
+        value: {
+          arrayValue: [
+            {
+              objectValue: [
+                {
+                  key: "ageOfBuilding",
+                  value: {
+                    numberValue: 17
+                  }
+                },
+                {
+                  key: "grossAreaInSqFt",
+                  value: {
+                    numberValue: 500
+                  }
+                },
+                {
+                  key: "buildingType",
+                  value: {
+                    stringValue: "multiStoreyBuilding"
+                  }
+                },
+                {
+                  key: "numberOfFloors",
+                  value: {
+                    numberValue: 4
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  holder: {
+    englishFirstName: "John",
+    englishLastName: "Val",
+    gender: "female",
+    dateOfBirth: "1986-08-07",
+    contacts: [
+      {
+        type: "email",
+        value: "valustik@gmail.com"
+      },
+      {
+        type: "telephoneNumber",
+        value: "12345678"
+      }
+    ],
+    identities: [
+      {
+        type: "hkid",
+        value: "A1234563"
+      }
+    ],
+    addresses: [
+      {
+        type: "address1",
+        fields: [
+          {
+            type: "address1",
+            value: "asdas asdasd"
+          },
+          {
+            type: "address2",
+            value: "asdasd"
+          },
+          {
+            type: "address3",
+            value: "9 Tong Chun St,"
+          },
+          {
+            type: "district",
+            value: "centralAndWestern"
+          },
+          {
+            type: "territory",
+            value: "kowloon"
+          }
+        ]
+      }
+    ]
+  },
+  insuredObjects: [
+    {
+      addresses: [
+        {
+          type: "address1",
+          fields: [
+            {
+              type: "address1",
+              value: "asdas asdasd"
+            },
+            {
+              type: "address2",
+              value: "asdasd"
+            },
+            {
+              type: "address3",
+              value: "9 Tong Chun St,"
+            },
+            {
+              type: "district",
+              value: "centralAndWestern"
+            },
+            {
+              type: "territory",
+              value: "kowloon"
+            }
+          ]
+        }
+      ],
+      facts: [
+        {
+          type: "buildingType",
+          values: {
+            stringValue: "multiStoreyBuilding"
+          }
+        },
+        {
+          type: "grossAreaInSqFt",
+          values: {
+            numberValue: 500
+          }
+        },
+        {
+          type: "yearBuilt",
+          values: {
+            numberValue: 17
+          }
+        }
+      ]
+    }
+  ]
+}
+
 /* istanbul ignore next */
-export { singleProductVariables, multiproductvariables, mockIssuanceObject }
+export { singleProductVariables, multiproductvariables, mockIssuanceObject, batchInitializePolicyVariables }

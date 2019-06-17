@@ -1,6 +1,6 @@
 import { gql } from '../gql'
 
-const query = /* GraphQL */ `
+const upsertBenefitOption = gql`
 mutation upsertBenefitOption($policyId: String! $input: benefitOptionInput!){
   upsertBenefitOption(policyId: $policyId input:$input){
     errors
@@ -9,4 +9,4 @@ mutation upsertBenefitOption($policyId: String! $input: benefitOptionInput!){
 }
 `
 
-export const upsertBenefitOption = ({variables, token, locale, __debug}) => gql({query, variables, token, locale, __debug})
+export { upsertBenefitOption }

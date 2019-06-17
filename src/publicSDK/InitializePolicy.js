@@ -2,12 +2,12 @@ import { batchCreateAllEntities, batchInitializePolicy, batchAddLinks } from "..
 import { addOffer, convertOffer } from "../atomicQueries";
 
 const createPolicy = async ({
-  payload,
+  variables,
   token,
   locale,
   needsOfflineUnderwriting
 }) => {
-  const payloadForQuote = JSON.parse(JSON.stringify(payload))
+  const payloadForQuote = JSON.parse(JSON.stringify(variables))
   if (
     payloadForQuote.policyParticulars.pricing !== undefined &&
     payloadForQuote.policyParticulars.productId !== undefined
@@ -22,7 +22,8 @@ const createPolicy = async ({
   const createdEntities = await batchCreateAllEntities({
     payload: payloadForQuote,
     token,
-    locale
+    locale,
+    __debug: false
   });
   if (createdEntities.errors)
     return Promise.resolve({ errors: createdEntities.errors });
@@ -54,9 +55,13 @@ const createPolicy = async ({
   // ------------------------------------------------------------
   // 4 Add offer to that policy return policy Id if needsOfflineUnderwriting === true
   // ------------------------------------------------------------
-  const { productId, pricing } = payload.policyParticulars;
-  const offerInput = { productId, premium: pricing };
-  const createdOffer = await addOffer({ policyId, offerInput, token, locale });
+  const { productId, pricing } = variables.policyParticulars;
+  const offerInput = {
+    productId,
+    ...pricing && {premium: pricing} // pricing should be added to maptos from crm to allow overrides, but not from coverquote
+  };
+  const res = await addOffer({ variables: {policyId, offerInput}, token, locale });
+  const createdOffer = res.data.addOffer.createdStatus.id
   if (createdOffer.errors)
     return Promise.resolve({ errors: createdOffer.errors });
   if (needsOfflineUnderwriting) return Promise.resolve({ policyId });
@@ -65,8 +70,10 @@ const createPolicy = async ({
   // 5 convert offer to quote
   // ------------------------------------------------------------
   const convertedOffer = await convertOffer({
-    quoteId: policyId,
-    offerId: createdOffer,
+    variables: {
+      quoteId: policyId,
+      offerId: createdOffer
+    },
     token,
     locale
   });

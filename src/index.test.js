@@ -1,13 +1,15 @@
 import { gql } from './gql';
 import { benefitCategories, login, productListing, checkoutConfig, createIndividual, getPrices } from './atomicQueries'
-import { singleProductVariables, multiproductvariables } from '../test/mockArgs'
+import { singleProductVariables, multiproductvariables, batchInitializePolicyVariables } from '../test/mockArgs'
 import { singleProduct } from './atomicQueries/singleProduct'
+import { createPolicy } from './publicSDK/InitializePolicy';
 
 let token
 const __debug = false
 
 async function getToken () {
   const variables = {tenantId:"vhis_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
+  // const variables = {tenantId:"test_uat", clientId:"covergo_crm", username:"admin@covergo.com", password:"adminadmin"}
   const res = await login({__debug, variables})
   token = res.data.token_2.accessToken
   Promise.resolve(token)
@@ -17,12 +19,16 @@ beforeAll(() => {
   return getToken()
 })
 
+afterAll(() => {
+  token = null
+})
+
 describe('Login Mutation', () => {
   it('should return a valid token', async () => {
     const variables = {tenantId:"vhis_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
     expect.assertions(1)
     const res = await login({__debug, variables})
-    expect(res).toHaveProperty('data.token_2.accessToken')
+    expect(res.data.token_2.accessToken).not.toBe(null)
   })
 })
 
@@ -44,7 +50,6 @@ describe('queries', () => {
     expect.assertions(2)
     const variables = singleProductVariables
     const res = await getPrices({__debug, token, variables})
-    console.log(JSON.stringify(res.data.products.list[0]))
     expect(res).toHaveProperty('data.products.list')
     expect(res.data.products.list[0]).toHaveProperty('pricing')
   })
@@ -85,7 +90,7 @@ describe('Entity Creation', () => {
           status
         }
       }`
-      let res = await gql({query, variables: {}, token, __debug: true})
+      let res = await gql({query, variables: {}, token, __debug})
     } else {
       return new Promise('done')
     }
@@ -96,5 +101,14 @@ describe('Entity Creation', () => {
     const res = await createIndividual({variables, token, __debug})
     individualId = res.data.createIndividual.createdStatus.id
     expect(res.data.createIndividual.status).toBe('success')
+  })
+})
+
+describe('BatchInitializePolicy', () => {
+  it('should initialize a policy', async () => {
+    expect.assertions(1)
+    const variables = batchInitializePolicyVariables
+    const res = await createPolicy({variables, token, __debug})
+    expect(res.policyId).toBeDefined()
   })
 })

@@ -3,7 +3,6 @@ import createObject from "./createObject.js"
 
 export default async ({ payload, token, locale }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, policyHolder } = payload;
-  // console.log(payload, insuredObjects); 
   const res = await Promise.all([
     createIndividual({ individualInput: policyHolder, token, locale }),
     ...insuredPeople.map(item => createIndividual({ individualInput: item, token, locale })),
@@ -21,14 +20,6 @@ export default async ({ payload, token, locale }) => {
   const objectsIds = objects.map(item => item.data.createObject.createdStatus.id)
 
   if (additionalPolicyHolder === null) {
-    // TODO: testing remove
-    console.log({
-      holderId: res[0].data.createIndividual.createdStatus.id,
-      individualsIds,
-      objectsIds,
-      otherHolderIds: null,
-    })
-    
     return Promise.resolve({
       holderId: res[0].data.createIndividual.createdStatus.id,
       individualsIds,
@@ -46,14 +37,6 @@ export default async ({ payload, token, locale }) => {
 
   const otherHolders   = createOtherHoldersResponse.filter(item => item.data.createIndividual);
   const otherHolderIds = otherHolders.map(item => item.data.createIndividual.createdStatus.id);
-  
-  // TODO: testing remove
-  console.log({
-    holderId: res[0].data.createIndividual.createdStatus.id,
-    individualsIds,
-    objectsIds,
-    otherHolderIds,
-  })
   
   return Promise.resolve({
     holderId: res[0].data.createIndividual.createdStatus.id,

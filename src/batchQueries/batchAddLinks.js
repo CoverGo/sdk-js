@@ -3,7 +3,7 @@ import { addLink } from "../atomicQueries";
 const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale }) => {
   // Connect all objects to holder
   const connectObjectsToHolder = payload.insuredObjects?.map((obj, i) =>
-    addLink({ linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }, token, locale })
+    addLink({ variables: {linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }}, token, locale })
   )
 
   // Create links for relationships between individuals and holder
@@ -11,7 +11,7 @@ const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale
     (acc, person, i) => [
       ...acc,
       ...person.relationshipsToHolder.map(relationship =>
-        addLink({ linkInput: { sourceId: createdEntities.individualsIds[i], link: relationship, targetId: createdEntities.holderId }, token, locale })
+        addLink({ variables: {linkInput: { sourceId: createdEntities.individualsIds[i], link: relationship, targetId: createdEntities.holderId }}, token, locale })
       ),
     ],
     []
@@ -22,7 +22,7 @@ const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale
   const res = await Promise.all(connectionsToHolder)
 
   // If errors
-  if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
+  // if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
   return Promise.resolve(res)
 }
 

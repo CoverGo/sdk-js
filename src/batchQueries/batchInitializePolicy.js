@@ -5,14 +5,14 @@ const batchInitializePolicy = async ({ payload, createdEntities, token, locale }
 
   // If policyHolder is one of insurers, add it to InsuredIds
   const insuredIds = [...individualsIds, ...objectsIds]
-  if (payload.isPolicyHolderOneOfInsured) insuredIds.push(holderId);
+  if (payload?.holder.isOneOfInsured) insuredIds.push(holderId);
 
   // Construct benefit options arrays
   // Go through policyHolder.facts, insuredPeople.facts, inuredObjects.facts
   // and when fact has typeId, create benefit option
   //
   // Also go through policyParticulars.benefitOptions
-  const benefitOptionsOfHolder = payload.policyHolder.facts?.filter(fact => fact.benefitTypeId)
+  const benefitOptionsOfHolder = payload.holder.facts?.filter(fact => fact.benefitTypeId)
     .map(fact => { return { key: fact.type, typeId: fact.benefitTypeId, value: fact.value }})
 
 
@@ -52,12 +52,16 @@ const batchInitializePolicy = async ({ payload, createdEntities, token, locale }
   const { startDate, endDate, productId, pricing, referralCode, source, values } = payload.policyParticulars
 
 
+  const initializePolicyInput = { holderId, insuredIds, benefitOptions, startDate, endDate, productId, pricing, referralCode, source, values, otherHolderIds }
+  
   // Initialize policy
-  const policyId = await initializePolicy({
-    initializePolicyInput: { holderId, insuredIds, benefitOptions, startDate, endDate, productId, pricing, referralCode, source, values, otherHolderIds },
+  const res = await initializePolicy({
+    variables: {initializePolicyInput},
     token,
     locale,
   })
+
+  const policyId = res.data.initializePolicy.policyStatus.id
 
   if (policyId.errors) return Promise.resolve({ errors: policyId.errors })
   return Promise.resolve(policyId)

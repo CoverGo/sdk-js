@@ -1,8 +1,8 @@
 import { gql } from '../gql'
 
 const initializePolicy = gql`
-mutation initializePolicy($policy: initializePolicyInput){
-  initializePolicy(policy: $policy){
+mutation initializePolicy($initializePolicyInput: initializePolicyInput){
+  initializePolicy(policy: $initializePolicyInput){
     status
     errors
     policyStatus{

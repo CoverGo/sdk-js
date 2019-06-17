@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/CoverGo/sdk-js/compare/v1.1.2...v1.1.3) (2019-06-17)
+
+
+### Bug Fixes
+
+* **batch:** correct batch mutations ([55476bf](https://github.com/CoverGo/sdk-js/commit/55476bf))
+
 ## [1.1.2](https://github.com/CoverGo/sdk-js/compare/v1.1.1...v1.1.2) (2019-06-14)
 
 

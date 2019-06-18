@@ -16,3 +16,5 @@ export { getPrices } from './getPrices'
 export { singleProduct } from './singleProduct'
 export { upsertBenefitOption } from "./upsertBenefitOptions";
 export { validatePolicy } from "./validatePolicy";
+export { initializeTransaction } from "./initializeTransaction";
+export { processTransaction } from "./processTransaction";

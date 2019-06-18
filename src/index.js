@@ -11,12 +11,14 @@ export {
   getPrices,
   initializePayment,
   initializePolicy,
+  initializeTransaction,
   login,
   processPaymentAndIssue,
+  processTransaction,
   productListing,
   singleProduct,
   upsertBenefitOption,
-  validatePolicy
+  validatePolicy,
 } from './atomicQueries'
 
 export { batchAddLinks, batchCreateAllEntities, batchInitializePolicy } from './batchQueries'

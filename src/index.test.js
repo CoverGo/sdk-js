@@ -293,3 +293,15 @@ describe('BatchInitializePolicy', () => {
     expect(res.policyId).toBeDefined()
   })
 })
+
+// describe('Payment flow', () => {
+//   let policyId
+//   beforeAll(() => {
+//     const res = await createPolicy({variables: batchInitializePolicyVariables, token, __debug})
+//     policyId = res.policyId
+//   })
+//   it('should initializeTransation', async () => {
+//     expect.assertions(1)
+//     const variables = {amount}
+//   })
+// })

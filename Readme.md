@@ -1,5 +1,66 @@
 ## Readme
 
+## Usage
+All query/mutation calls have a single parameter as an object that takes the following properties
+```
+{variables = {}, token = '', locale = "en", __debug = false, errorLocation = null}
+```
+The variables property must follow the inputTypes as defined in https://api.covergo.com/playground
+<dl>
+  <dt><strong>addLink</strong></dt>
+  <dd></dd>
+  <dt><strong>addFact</strong></dt>
+  <dd></dd>
+  <dt><strong>addOffer</strong></dt>
+  <dd></dd>
+  <dt><strong>benefitCategories</strong></dt>
+  <dd></dd>
+  <dt><strong>checkoutConfig</strong></dt>
+  <dd></dd>
+  <dt><strong>convertOffer</strong></dt>
+  <dd></dd>
+  <dt><strong>createIndividual</strong></dt>
+  <dd></dd>
+  <dt><strong>createObject</strong></dt>
+  <dd></dd>
+  <dt><strong>deleteEntity</strong></dt>
+  <dd></dd>
+  <dt><strong>getPrices</strong></dt>
+  <dd></dd>
+  <dt><strong>initializePayment</strong></dt>
+  <dd></dd>
+  <dt><strong>initializePolicy</strong></dt>
+  <dd></dd>
+  <dt><strong>login</strong></dt>
+  <dd></dd>
+  <dt><strong>processPaymentAndIssue</strong></dt>
+  <dd></dd>
+  <dt><strong>productListing</strong></dt>
+  <dd></dd>
+  <dt><strong>singleProduct</strong></dt>
+  <dd></dd>
+  <dt><strong>upsertBenefitOption</strong></dt>
+  <dd></dd>
+  <dt><strong>validatePolicy</strong></dt>
+  <dd></dd>
+  <dt><strong>batchAddLinks</strong></dt>
+  <dd></dd>
+  <dt><strong>batchCreateAllEntities</strong></dt>
+  <dd></dd>
+  <dt><strong>batchInitializePolicy</strong></dt>
+  <dd></dd>
+  <dt><strong>createPolicy</strong></dt>
+  <dd></dd>
+  <dt><strong>createQuote</strong></dt>
+  <dd></dd>
+  <dt><strong>payAndIssuePolicy</strong></dt>
+  <dd></dd>
+
+<dt><strong>gql</strong></dt>
+<dd>
+
+</dl>
+
 ## Contributing
 
 #### Commits

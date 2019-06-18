@@ -180,7 +180,7 @@ let token
 const __debug = false
 
 async function getToken () {
-  const variables = {tenantId:"vhis_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
+  const variables = {tenantId:"test_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
   // const variables = {tenantId:"test_uat", clientId:"covergo_crm", username:"admin@covergo.com", password:"adminadmin"}
   const res = await login({__debug, variables})
   token = res.data.token_2.accessToken
@@ -197,7 +197,7 @@ afterAll(() => {
 
 describe('Login Mutation', () => {
   it('should return a valid token', async () => {
-    const variables = {tenantId:"vhis_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
+    const variables = {tenantId:"test_uat", clientId:"coverQuote", username:"coverQuoteGuest", password:"coverQuoteGuest"}
     expect.assertions(1)
     const res = await login({__debug, variables})
     expect(res.data.token_2.accessToken).not.toBe(null)
@@ -218,13 +218,13 @@ describe('queries', () => {
     expect(res).toHaveProperty('data.products')
   })
 
-  it('should return prices for a single product', async () => {
-    expect.assertions(2)
-    const variables = singleProductVariables
-    const res = await getPrices({__debug, token, variables})
-    expect(res).toHaveProperty('data.products.list')
-    expect(res.data.products.list[0]).toHaveProperty('pricing')
-  })
+  // it('should return prices for a single product', async () => {
+  //   expect.assertions(2)
+  //   const variables = singleProductVariables
+  //   const res = await getPrices({__debug, token, variables})
+  //   expect(res).toHaveProperty('data.products.list')
+  //   expect(res.data.products.list[0]).toHaveProperty('pricing')
+  // })
 
   it('should return a list of products', async () => {
     expect.assertions(1)
@@ -233,13 +233,13 @@ describe('queries', () => {
     expect(res).toHaveProperty('data.products')
   })
 
-  it('should return a checkout config for a given product', async () => {
-    expect.assertions(1)
-    const variables = singleProductVariables
-    delete variables.productTypes
-    const res = await checkoutConfig({__debug, token, variables})
-    expect(JSON.stringify(res)).toContain('checkoutConfig')
-  })
+  // it('should return a checkout config for a given product', async () => {
+  //   expect.assertions(1)
+  //   const variables = singleProductVariables
+  //   delete variables.productTypes
+  //   const res = await checkoutConfig({__debug, token, variables})
+  //   expect(JSON.stringify(res)).toContain('checkoutConfig')
+  // })
 
   it('should return errors for malformed queries', async () => {
     const query = `query{}`
@@ -290,6 +290,6 @@ describe('BatchInitializePolicy', () => {
     // const variables = batch2
     const res = await createPolicy({variables, token, __debug})
     console.log(JSON.stringify(res))
-    expect(res.data.policyId).toBeDefined()
+    expect(res.policyId).toBeDefined()
   })
 })

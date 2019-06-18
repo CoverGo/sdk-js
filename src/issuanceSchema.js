@@ -244,7 +244,7 @@ export default {
       internalCode: null,
       internalCodeLength: null,
       addresses: null,
-      facts: null,
+      facts: null, // NOTE: values key of sub key must be 
       identities: null,
       contacts: null
     }

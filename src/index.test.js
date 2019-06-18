@@ -4,6 +4,178 @@ import { singleProductVariables, multiproductvariables, batchInitializePolicyVar
 import { singleProduct } from './atomicQueries/singleProduct'
 import { createPolicy } from './publicSDK/InitializePolicy';
 
+const batch2 = {
+  "policyParticulars": {
+    "startDate": null,
+    "productId": {
+      "type": "home",
+      "plan": "chubb_myhomeguard_occupier_plana",
+      "version": null
+    },
+    "pricing": {
+      "discountCodes": []
+    },
+    "referralCode": null,
+    "source": "COMPARISON",
+    "benefitOptions": [],
+    "values": [
+      {
+        "key": "isOwner",
+        "values": {
+          "booleanValue": false
+        }
+      },
+      {
+        "key": "isOccupier",
+        "values": {
+          "booleanValue": true
+        }
+      },
+      {
+        "key": "insureds",
+        "values": {
+          "arrayValue": [
+            {
+              "objectValue": [
+                {
+                  "key": "ageOfBuilding",
+                  "values": {
+                    "numberValue": 17
+                  }
+                },
+                {
+                  "key": "grossAreaInSqFt",
+                  "values": {
+                    "numberValue": 500
+                  }
+                },
+                {
+                  "key": "buildingType",
+                  "values": {
+                    "stringValue": "multiStoreyBuilding"
+                  }
+                },
+                {
+                  "key": "numberOfFloors",
+                  "values": {
+                    "numberValue": 4
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "holder": {
+    "englishFirstName": null,
+    "englishLastName": null,
+    "gender": "male",
+    "dateOfBirth": null,
+    "contacts": [
+      {
+        "type": "email",
+        "value": null
+      },
+      {
+        "type": "telephoneNumber",
+        "value": null
+      }
+    ],
+    "identities": [
+      {
+        "type": "hkid",
+        "value": null
+      }
+    ],
+    "addresses": [
+      {
+        "type": "address1",
+        "fields": [
+          {
+            "type": "address1",
+            "value": null
+          },
+          {
+            "type": "address2",
+            "value": null
+          },
+          {
+            "type": "address3",
+            "value": null
+          },
+          {
+            "type": "district",
+            "value": null
+          },
+          {
+            "type": "territory",
+            "value": null
+          }
+        ]
+      }
+    ]
+  },
+  "insuredObjects": [
+    {
+      "addresses": [
+        {
+          "type": "address1",
+          "fields": [
+            {
+              "type": "address1",
+              "value": null
+            },
+            {
+              "type": "address2",
+              "value": null
+            },
+            {
+              "type": "address3",
+              "value": null
+            },
+            {
+              "type": "district",
+              "value": null
+            },
+            {
+              "type": "territory",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "type": "ageOfBuilding",
+          "values": {
+            "numberValue": 17
+          }
+        },
+        {
+          "type": "grossAreaInSqFt",
+          "values": {
+            "numberValue": 500
+          }
+        },
+        {
+          "type": "buildingType",
+          "values": {
+            "stringValue": "multiStoreyBuilding"
+          }
+        },
+        {
+          "type": "numberOfFloors",
+          "values": {
+            "numberValue": 4
+          }
+        }
+      ]
+    }
+  ]
+}
+
 let token
 const __debug = false
 
@@ -108,7 +280,9 @@ describe('BatchInitializePolicy', () => {
   it('should initialize a policy', async () => {
     expect.assertions(1)
     const variables = batchInitializePolicyVariables
+    // const variables = batch2
     const res = await createPolicy({variables, token, __debug})
+    console.log('res', res)
     expect(res.policyId).toBeDefined()
   })
 })

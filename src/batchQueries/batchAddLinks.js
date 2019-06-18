@@ -22,7 +22,7 @@ const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale
   const res = await Promise.all(connectionsToHolder)
 
   // If errors
-  // if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
+  if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [...res.filter(batch => batch.errors)] })
   return Promise.resolve(res)
 }
 

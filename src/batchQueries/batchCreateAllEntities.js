@@ -11,7 +11,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   ])
   
   // Check for errors
-  // if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
+  if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [...res.filter(batch => batch.errors)] })
 
   // Return object with created entities ids
   const individualsAndObjects = res.splice(1, res.length)
@@ -37,7 +37,8 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
     ...additionalPolicyHolder.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale }))
   ])
 
-  // if (createOtherHoldersResponse.find(batch => batch.errors)) return Promise.resolve({ errors: [{ message: "Unexpected error" }] })
+  // Check for errors
+  if (createOtherHoldersResponse.find(batch => batch.errors)) return Promise.resolve({ errors: [...createOtherHoldersResponse.filter(batch => batch.errors)] })
 
   const otherHolders   = createOtherHoldersResponse.filter(item => item.data.createIndividual);
   const otherHolderIds = otherHolders.map(item => item.data.createIndividual.createdStatus.id);

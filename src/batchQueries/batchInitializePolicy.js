@@ -61,10 +61,12 @@ const batchInitializePolicy = async ({ payload, createdEntities, token, locale }
     locale,
   })
 
+  if (res.errors) return Promise.resolve({ errors: res.errors })
+
   const policyId = res.data.initializePolicy.policyStatus.id
 
-  if (policyId.errors) return Promise.resolve({ errors: policyId.errors })
   return Promise.resolve(policyId)
+
 }
 
 export { batchInitializePolicy }

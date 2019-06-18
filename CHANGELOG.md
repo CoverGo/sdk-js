@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CoverGo/sdk-js/compare/v1.1.5...v1.2.0) (2019-06-18)
+
+
+### Features
+
+* **errors:** add withFieldErrorMapping method to gql ([8f99353](https://github.com/CoverGo/sdk-js/commit/8f99353))
+
 ## [1.1.5](https://github.com/CoverGo/sdk-js/compare/v1.1.4...v1.1.5) (2019-06-18)
 
 

@@ -55,8 +55,6 @@ The variables property must follow the inputTypes as defined in https://api.cove
   <dd></dd>
   <dt><strong>createQuote</strong></dt>
   <dd></dd>
-  <dt><strong>payAndIssuePolicy</strong></dt>
-  <dd></dd>
 
 <dt><strong>gql</strong></dt>
 <dd>

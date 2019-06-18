@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/CoverGo/sdk-js/compare/v1.2.0...v1.3.0) (2019-06-18)
+
+
+### Features
+
+* **mutations:** add processTransaction and initializeTransaction ([97a0d6d](https://github.com/CoverGo/sdk-js/commit/97a0d6d))
+
 # [1.2.0](https://github.com/CoverGo/sdk-js/compare/v1.1.5...v1.2.0) (2019-06-18)
 
 

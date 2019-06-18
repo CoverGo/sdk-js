@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/CoverGo/sdk-js/compare/v1.1.4...v1.1.5) (2019-06-18)
+
+
+### Bug Fixes
+
+* **error handling:** pass errors through on batch ([eb04bf8](https://github.com/CoverGo/sdk-js/commit/eb04bf8))
+
 ## [1.1.4](https://github.com/CoverGo/sdk-js/compare/v1.1.3...v1.1.4) (2019-06-17)
 
 

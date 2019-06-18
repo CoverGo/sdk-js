@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch'
 
-const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = true} ={}) => {
+const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = false} ={}) => {
   try {
     const method = "POST"
     const url = "https://api.covergo.com/graphql"

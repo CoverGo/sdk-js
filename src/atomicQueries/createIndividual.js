@@ -10,6 +10,6 @@ mutation createIndividual($createIndividualInput: createIndividualInput!) {
     status
   }
 }
-`
+`.withFieldErrorMapping()
 
 export { createIndividual }

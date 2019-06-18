@@ -7,6 +7,6 @@ mutation convertOffer($policyId: String! $offerId: String!){
     status
   }
 }
-`
+`.withFieldErrorMapping()
 
 export { convertOffer }

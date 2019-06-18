@@ -269,10 +269,17 @@ describe('Entity Creation', () => {
   })
   it('should create an Individual', async () => {
     expect.assertions(1)
-    const variables = {createIndividualInput:{englishFirstName:"AlexTest", englishLastName:"LastNameTest"}}
+    const variables = {createIndividualInput:{englishFirstName: "AlexTest", englishLastName:"LastNameTest"}}
     const res = await createIndividual({variables, token, __debug})
-    individualId = res.data.createIndividual.createdStatus.id
     expect(res.data.createIndividual.status).toBe('success')
+  })
+
+  it('should return errors at the top level when using `withFieldErrorMapping`', async () => {
+    expect.assertions(1)
+    const variables = {createIndividualInput: {englishFirstName: {name: "Lura"}, englishLastName:"Schaden"}}
+    const res = await createIndividual({variables, token, __debug})
+    console.log(JSON.stringify(res))
+    expect(res.errors).toBeInstanceOf(Array)
   })
 })
 
@@ -282,7 +289,7 @@ describe('BatchInitializePolicy', () => {
     const variables = batchInitializePolicyVariables
     // const variables = batch2
     const res = await createPolicy({variables, token, __debug})
-    console.log('res', res)
-    expect(res.policyId).toBeDefined()
+    console.log(JSON.stringify(res))
+    expect(res.data.policyId).toBeDefined()
   })
 })

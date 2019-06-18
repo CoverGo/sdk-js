@@ -1,7 +1,7 @@
 import { fetch } from 'cross-fetch'
 // fix module dependencies
 
-const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = true} ={}) => {
+const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = false, errorLocation = null} ={}) => {
   try {
     const method = "POST"
     const url = "https://api.covergo.com/graphql"
@@ -43,7 +43,20 @@ const coverFetch = async ({query, variables = {}, token = '', locale = "en", __d
       throw new Error('Network error from GQL')
     }
 
-    return res.json()
+    let resData = await res.json()
+    let errors = []
+    if(errorLocation && typeof errorLocation === 'string') {  // resolve errors by following the given dotobject path (only simple paths, no arrays or bracket notation)
+      errors = [...errorLocation.split(".").reduce((acc, cur) => acc[cur] || null, {...resData})]
+    } else if(errorLocation && typeof errorLocation === 'function') {  // resolve errors through custom function
+      errors =  [...errorLocation(resData)]
+    } else if(errorLocation && resData.data) { // resolve errors from top level results type of data object
+      errors = [ ...Object.keys(resData.data).map(key => resData.data[key].errors || []).reduce((acc, cur) => [...acc, ...cur], []) ]
+    }
+    return Promise.resolve({
+      ...resData,
+      ...errors.length && {errors}, // conditionally replace the errors property if we found new errors at the field level
+      ...errors.length && { otherErrors: resData.errors } // if we are replacing the errors array we move other errors to otherErrors property
+    })
 
   } catch(err) {
     return { errors: [{ message: err }]}
@@ -56,7 +69,9 @@ function gql(strings, ...values) {
     query += string + (values[i] || '')
   })
 
-  return ({variables, token, locale, __debug}) => coverFetch({query, variables, token, locale, __debug});
+  const returnFn = ({variables, token, locale, __debug}) => coverFetch.call(this, {query, variables, token, locale, __debug});
+  returnFn.withFieldErrorMapping = (errorLocation) => ({variables, token, locale, __debug}) => coverFetch({query, variables, token, locale, __debug, errorLocation: errorLocation || true})
+  return returnFn
 }
 
 export { gql }

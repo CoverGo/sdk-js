@@ -1,11 +1,13 @@
-## Readme
+# Usage
 
-## Usage
 All query/mutation calls have a single parameter as an object that takes the following properties
+
 ```
 {variables = {}, token = '', locale = "en", __debug = false, errorLocation = null}
 ```
+
 The variables property must follow the inputTypes as defined in https://api.covergo.com/playground
+
 <dl>
   <dt><strong>addLink</strong></dt>
   <dd></dd>
@@ -61,12 +63,14 @@ The variables property must follow the inputTypes as defined in https://api.cove
 
 </dl>
 
-## Contributing
+# Contributing
 
-#### Commits
+### Commits
+
 commit messages must follow our commit guidelines (based on Angular commit message conventions)
 
 **Commit Message Format**
+
 ```
 <type>(<scope>): <subject>
 <BLANK LINE>
@@ -74,6 +78,7 @@ commit messages must follow our commit guidelines (based on Angular commit messa
 <BLANK LINE>
 <footer>
 ```
+
 The header is mandatory and the scope of the header is optional.
 
 Any line of the commit message cannot be longer 100 characters! This allows the message to be easier to read on GitHub as well as in various git tools.
@@ -98,7 +103,7 @@ chore: Changes to the build process or auxiliary tools and libraries such as doc
 
 The scope could be anything specifying place of the commit change. For example products, insurers, etc...
 
-You can use * when the change affects more than a single scope.
+You can use \* when the change affects more than a single scope.
 
 **Subject**
 
@@ -115,10 +120,10 @@ Footer
 
 The footer should contain any information about Breaking Changes and is also the place to reference GitHub issues that this commit closes.
 
-Breaking Changes should start with the word `BREAKING CHANGE: ` with a space or two newlines. The rest of the commit message is then used for this.
+Breaking Changes should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
 
 Commits with breaking changes will automatically generate a MAJOR (breaking) RELEASE when pushed to master
 
+### Releasing a new version
 
-#### Releasing a new version
-Simply push to master and the package will be built tested and released.  Commit logs will automatically generate the new version, release notes and changelog.md
+Simply push to master and the package will be built tested and released. Commit logs will automatically generate the new version, release notes and changelog.md

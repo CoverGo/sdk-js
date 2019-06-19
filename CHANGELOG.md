@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/CoverGo/sdk-js/compare/v1.4.3...v1.5.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* **docs:** trigger build ([f5db221](https://github.com/CoverGo/sdk-js/commit/f5db221))
+* **export:** atomic queries export ([59bf568](https://github.com/CoverGo/sdk-js/commit/59bf568))
+
+
+### Features
+
+* **query:** initializeCheckout ([f015d1f](https://github.com/CoverGo/sdk-js/commit/f015d1f))
+
 ## [1.4.3](https://github.com/CoverGo/sdk-js/compare/v1.4.2...v1.4.3) (2019-06-19)
 
 

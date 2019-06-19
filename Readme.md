@@ -7,6 +7,7 @@ All query/mutation calls have a single parameter as an object that takes the fol
 ```
 
 The variables property must follow the inputTypes as defined in https://api.covergo.com/playground
+Name of the variable is name of the param.
 
 <dl>
   <dt><strong>addLink</strong></dt>

@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/CoverGo/sdk-js/compare/v1.4.0...v1.4.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* **query:** atomic transactions ([860ad1a](https://github.com/CoverGo/sdk-js/commit/860ad1a))
+
 # [1.4.0](https://github.com/CoverGo/sdk-js/compare/v1.3.0...v1.4.0) (2019-06-19)
 
 

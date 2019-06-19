@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/CoverGo/sdk-js/compare/v1.3.0...v1.4.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* **docs:** add product listing definition ([00c7991](https://github.com/CoverGo/sdk-js/commit/00c7991))
+* **docs:** trigger build ([7bc877a](https://github.com/CoverGo/sdk-js/commit/7bc877a))
+
+
+### Features
+
+* **mutations:** update processTransaction and initialiseTransaction with api fields; ([d0b7028](https://github.com/CoverGo/sdk-js/commit/d0b7028))
+
 # [1.3.0](https://github.com/CoverGo/sdk-js/compare/v1.2.0...v1.3.0) (2019-06-18)
 
 

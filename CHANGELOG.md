@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/CoverGo/sdk-js/compare/v1.4.2...v1.4.3) (2019-06-19)
+
+
+### Bug Fixes
+
+* **query:** procesTransaction tryIssue ([ada5209](https://github.com/CoverGo/sdk-js/commit/ada5209))
+
 ## [1.4.2](https://github.com/CoverGo/sdk-js/compare/v1.4.1...v1.4.2) (2019-06-19)
 
 

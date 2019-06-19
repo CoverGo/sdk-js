@@ -1,8 +1,8 @@
 import { gql } from "../gql"
 
 const processTransaction = gql`
-	mutation processTransaction($transactionId: transactionId, $processTransactionInput: processTransactionInput!) {
-		processTransaction {
+	mutation processTransaction($transactionId: String!, $input: processTransactionInput!) {
+		processTransaction(transactionId: $transactionId, input: $input) {
 			errors
 			status
 			policyStatus {

@@ -1,8 +1,8 @@
 import { gql } from "../gql"
 
 const initializeTransaction = gql`
-	mutation initializeTransaction($initializeTransactionInput: initializeTransactionInput!) {
-		initializeTransaction {
+	mutation initializeTransaction($input: initializeTransactionInput!) {
+		initializeTransaction(input: $input) {
 			errors
 			value {
 				token

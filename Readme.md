@@ -38,7 +38,7 @@ The variables property must follow the inputTypes as defined in https://api.cove
   <dt><strong>processPaymentAndIssue</strong></dt>
   <dd></dd>
   <dt><strong>productListing</strong></dt>
-  <dd></dd>
+  <dd>Returns a listing of available Products</dd>
   <dt><strong>singleProduct</strong></dt>
   <dd></dd>
   <dt><strong>upsertBenefitOption</strong></dt>

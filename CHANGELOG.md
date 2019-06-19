@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/CoverGo/sdk-js/compare/v1.4.1...v1.4.2) (2019-06-19)
+
+
+### Bug Fixes
+
+* **query:** transactions 2 ([0883e04](https://github.com/CoverGo/sdk-js/commit/0883e04))
+
 ## [1.4.1](https://github.com/CoverGo/sdk-js/compare/v1.4.0...v1.4.1) (2019-06-19)
 
 

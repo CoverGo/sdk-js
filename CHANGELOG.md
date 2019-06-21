@@ -1,3 +1,11 @@
+## [1.5.2](https://github.com/CoverGo/sdk-js/compare/v1.5.1...v1.5.2) (2019-06-21)
+
+
+### Bug Fixes
+
+* **error handling:** non error handling fixed ([fa532cc](https://github.com/CoverGo/sdk-js/commit/fa532cc))
+* **tests:** add variables to benefit categories test ([740efad](https://github.com/CoverGo/sdk-js/commit/740efad))
+
 ## [1.5.1](https://github.com/CoverGo/sdk-js/compare/v1.5.0...v1.5.1) (2019-06-21)
 
 

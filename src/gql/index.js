@@ -49,7 +49,7 @@ const coverFetch = async ({query, variables = {}, token = '', locale = "en", __d
       errors = [...errorLocation.split(".").reduce((acc, cur) => acc[cur] || null, {...resData})]
     } else if(errorLocation && typeof errorLocation === 'function') {  // resolve errors through custom function
       errors =  [...errorLocation(resData)]
-    } else if(errorLocation && resData.data) { // resolve errors from top level results type of data object
+    } else if(!errorLocation && resData.data) { // resolve errors from top level results type of data object
       errors = [ ...Object.keys(resData.data).map(key => resData.data[key].errors || []).reduce((acc, cur) => [...acc, ...cur], []) ]
     }
     return Promise.resolve({

@@ -241,11 +241,11 @@ describe('queries', () => {
   //   expect(JSON.stringify(res)).toContain('checkoutConfig')
   // })
 
-  it('should return errors for malformed queries', async () => {
-    const query = `query{}`
-    const res = await gql``({__debug})
-    expect(res).toHaveProperty('errors')
-  })
+  // it('should return errors for malformed queries', async () => {
+  //   const query = `query{}`
+  //   const res = await gql``({__debug})
+  //   expect(res).toHaveProperty('errors')
+  // })
 })
 
 describe('Entity Creation', () => {

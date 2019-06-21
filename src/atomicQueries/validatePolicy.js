@@ -11,6 +11,6 @@ const validatePolicy = gql`
       }
     }
   }
-`
+`.withFieldErrorMapping()
 
 export { validatePolicy }

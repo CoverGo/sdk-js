@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/CoverGo/sdk-js/compare/v1.5.0...v1.5.1) (2019-06-21)
+
+
+### Bug Fixes
+
+* **error handling:** add withFieldErrorMapping to validatePolicy ([4dde399](https://github.com/CoverGo/sdk-js/commit/4dde399))
+
 # [1.5.0](https://github.com/CoverGo/sdk-js/compare/v1.4.3...v1.5.0) (2019-06-19)
 
 

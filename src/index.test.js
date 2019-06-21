@@ -207,7 +207,10 @@ describe('Login Mutation', () => {
 describe('queries', () => {
   it('should return benefitCategories', async () => {
     expect.assertions(1)
-    const res = await benefitCategories({__debug, token})
+    const variables = {
+      productTypes: ['travel']
+    }
+    const res = await benefitCategories({__debug, token, variables})
     expect(res).toHaveProperty('data.benefitCategories')
   })
 

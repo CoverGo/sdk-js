@@ -1,3 +1,11 @@
+## [1.5.3](https://github.com/CoverGo/sdk-js/compare/v1.5.2...v1.5.3) (2019-06-24)
+
+
+### Bug Fixes
+
+* **query:** add name to taxes on pricing fragment ([40506de](https://github.com/CoverGo/sdk-js/commit/40506de))
+* **tests:** change to apex_uat to pass ([a7c98b1](https://github.com/CoverGo/sdk-js/commit/a7c98b1))
+
 ## [1.5.2](https://github.com/CoverGo/sdk-js/compare/v1.5.1...v1.5.2) (2019-06-21)
 
 

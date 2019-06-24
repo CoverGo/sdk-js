@@ -19,6 +19,7 @@ const PricesFragment = /* GraphQL */ `
 
 			appliedTaxes {
 				code
+				name
 				ratio
 				flat
 				order

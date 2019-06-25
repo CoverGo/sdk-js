@@ -1,3 +1,14 @@
+## [1.5.13](https://github.com/CoverGo/sdk-js/compare/v1.5.12...v1.5.13) (2019-06-25)
+
+
+### Bug Fixes
+
+* **logging:** add __debug to batch calls ([dd4760c](https://github.com/CoverGo/sdk-js/commit/dd4760c))
+* **syntax:** debug instead of __debug ([66b7018](https://github.com/CoverGo/sdk-js/commit/66b7018))
+* **syntax:** debug instead of __debug ([c84e6c5](https://github.com/CoverGo/sdk-js/commit/c84e6c5))
+* **syntax:** debug written as __debug ([c86771c](https://github.com/CoverGo/sdk-js/commit/c86771c))
+* **syntax:** syntax fixes ([5147efe](https://github.com/CoverGo/sdk-js/commit/5147efe))
+
 ## [1.5.12](https://github.com/CoverGo/sdk-js/compare/v1.5.11...v1.5.12) (2019-06-25)
 
 

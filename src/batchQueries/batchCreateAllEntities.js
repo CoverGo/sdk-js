@@ -7,12 +7,12 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   var holderIsOneOfInsured = holder.isOneOfInsured
   const holderCopy = JSON.parse(JSON.stringify(holder))
   delete holderCopy.isOneOfInsured
-  delete holderCopy.relationshipToHolder
+  delete holderCopy.relationshipsToHolder
 
   const insuredPeopleCopy = JSON.parse(JSON.stringify(insuredPeople))
 
   insuredPeopleCopy.forEach(person => {
-    delete person.relationshipToHolder
+    delete person.relationshipsToHolder
   });
 
   const res = await Promise.all([

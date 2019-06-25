@@ -1,13 +1,15 @@
 import { addLink } from "../atomicQueries";
 
 const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale }) => {
+
+  const allInsuredPeople = payload.holder.isOneOfInsured ? [payload.holder, ...payload.insuredPeople] : payload.insuredPeople
   // Connect all objects to holder
   const connectObjectsToHolder = payload.insuredObjects?.map((obj, i) =>
     addLink({ variables: {linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }}, token, locale })
   )
 
   // Create links for relationships between individuals and holder
-  const createRelationshipsBetweenHolderAndIndividual = payload.insuredPeople?.filter(people => people.relationshipsToHolder).reduce(
+  const createRelationshipsBetweenHolderAndIndividual = payload.allInsuredPeople?.filter(people => people.relationshipsToHolder).reduce(
     (acc, person, i) => [
       ...acc,
       ...person.relationshipsToHolder.map(relationship =>

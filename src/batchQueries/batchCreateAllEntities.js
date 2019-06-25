@@ -22,7 +22,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
     return item.data.createIndividual
   })
   const objects = individualsAndObjects.filter(item => item.data.createObject)
-  const individualsIds = individuals.map(item => item.data.createIndividual.createdStatus.id)
+  let individualsIds = individuals.map(item => item.data.createIndividual.createdStatus.id)
   const objectsIds = objects.map(item => item.data.createObject.createdStatus.id)
   const holderId = res[0].data.createIndividual.createdStatus.id
   if(holderIsOneOfInsured) {

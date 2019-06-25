@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/CoverGo/sdk-js/compare/v1.5.4...v1.5.5) (2019-06-25)
+
+
+### Bug Fixes
+
+* **batch create entities:** individualIds const to let ([dd0baa1](https://github.com/CoverGo/sdk-js/commit/dd0baa1))
+
 ## [1.5.4](https://github.com/CoverGo/sdk-js/compare/v1.5.3...v1.5.4) (2019-06-25)
 
 

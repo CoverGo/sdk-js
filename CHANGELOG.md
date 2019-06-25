@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/CoverGo/sdk-js/compare/v1.5.5...v1.5.6) (2019-06-25)
+
+
+### Bug Fixes
+
+* **relationships:** delete relationshipToHolder from create indiv ([0d3199a](https://github.com/CoverGo/sdk-js/commit/0d3199a))
+
 ## [1.5.5](https://github.com/CoverGo/sdk-js/compare/v1.5.4...v1.5.5) (2019-06-25)
 
 

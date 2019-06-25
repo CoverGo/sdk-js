@@ -4,6 +4,9 @@ import { createObject } from "../atomicQueries"
 const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
 
+  var holderIsOneOfInsured = holder.isOneOfInsured
+  delete holder.isOneOfInsured
+
   const res = await Promise.all([
     createIndividual({ variables: {createIndividualInput: holder}, token, locale }),
     ...insuredPeople.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),
@@ -21,11 +24,15 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const objects = individualsAndObjects.filter(item => item.data.createObject)
   const individualsIds = individuals.map(item => item.data.createIndividual.createdStatus.id)
   const objectsIds = objects.map(item => item.data.createObject.createdStatus.id)
+  const holderId = res[0].data.createIndividual.createdStatus.id
+  if(holderIsOneOfInsured) {
+    individualsIds = [holderId, ...individualsIds]
+  }
 
   if (additionalPolicyHolder === null) {
     
     return Promise.resolve({
-      holderId: res[0].data.createIndividual.createdStatus.id,
+      holderId,
       individualsIds,
       objectsIds,
       otherHolderIds: null,
@@ -44,7 +51,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const otherHolderIds = otherHolders.map(item => item.data.createIndividual.createdStatus.id);
   
   return Promise.resolve({
-    holderId: res[0].data.createIndividual.createdStatus.id,
+    holderId,
     individualsIds,
     objectsIds,
     otherHolderIds,

@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/CoverGo/sdk-js/compare/v1.5.9...v1.5.10) (2019-06-25)
+
+
+### Bug Fixes
+
+* **batch links:** holder stays in insured people for links ([50735b5](https://github.com/CoverGo/sdk-js/commit/50735b5))
+
 ## [1.5.9](https://github.com/CoverGo/sdk-js/compare/v1.5.8...v1.5.9) (2019-06-25)
 
 

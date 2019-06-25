@@ -5,16 +5,19 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
 
   var holderIsOneOfInsured = holder.isOneOfInsured
-  delete holder.isOneOfInsured
-  delete holder.relationshipToHolder
+  const holderCopy = JSON.parse(JSON.stringify(holder))
+  delete holderCopy.isOneOfInsured
+  delete holderCopy.relationshipToHolder
 
-  insuredPeople.forEach(person => {
+  const insuredPeopleCopy = JSON.parse(JSON.stringify(insuredPeople))
+
+  insuredPeopleCopy.forEach(person => {
     delete person.relationshipToHolder
   });
 
   const res = await Promise.all([
-    createIndividual({ variables: {createIndividualInput: holder}, token, locale }),
-    ...insuredPeople.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),
+    createIndividual({ variables: {createIndividualInput: holderCopy}, token, locale }),
+    ...insuredPeopleCopy.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),
     ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale })),
   ])
   

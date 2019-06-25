@@ -8,6 +8,10 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   delete holder.isOneOfInsured
   delete holder.relationshipToHolder
 
+  insuredPeople.forEach(person => {
+    delete person.relationshipToHolder
+  });
+
   const res = await Promise.all([
     createIndividual({ variables: {createIndividualInput: holder}, token, locale }),
     ...insuredPeople.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),

@@ -1,3 +1,10 @@
+## [1.5.11](https://github.com/CoverGo/sdk-js/compare/v1.5.10...v1.5.11) (2019-06-25)
+
+
+### Bug Fixes
+
+* **create:** add benefit options to create offer not init policy ([050135e](https://github.com/CoverGo/sdk-js/commit/050135e))
+
 ## [1.5.10](https://github.com/CoverGo/sdk-js/compare/v1.5.9...v1.5.10) (2019-06-25)
 
 

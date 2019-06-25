@@ -5,7 +5,8 @@ const createPolicy = async ({
   variables,
   token,
   locale,
-  needsOfflineUnderwriting
+  needsOfflineUnderwriting,
+  __debug = false
 }) => {
   const payloadForQuote = JSON.parse(JSON.stringify(variables))
   if (
@@ -23,7 +24,7 @@ const createPolicy = async ({
     payload: payloadForQuote,
     token,
     locale,
-    __debug: false
+    __debug
   });
   if (createdEntities.errors)
     return Promise.resolve({ errors: createdEntities.errors });
@@ -35,7 +36,8 @@ const createPolicy = async ({
     payload: payloadForQuote,
     createdEntities,
     token,
-    locale
+    locale,
+    __debug
   });
   if (policyId.errors) return Promise.resolve({ errors: policyId.errors });
 
@@ -47,7 +49,8 @@ const createPolicy = async ({
     policyId,
     createdEntities,
     token,
-    locale
+    locale,
+    __debug
   });
   if (createdLinks.errors)
     return Promise.resolve({ errors: createdLinks.errors });
@@ -62,7 +65,7 @@ const createPolicy = async ({
     premium: pricing
     // ...pricing?.discountCodes && {premium: { discountCodes: pricing.discountCodes }} // pricing should be added to maptos from crm to allow overrides, but not from coverquote
   };
-  const createdOffer = await addOffer({ variables: {policyId, offerInput}, token, locale });
+  const createdOffer = await addOffer({ variables: {policyId, offerInput}, token, locale, __debug });
   
   if (createdOffer.errors)
     return Promise.resolve({ errors: createdOffer.errors });
@@ -80,7 +83,8 @@ const createPolicy = async ({
       offerId
     },
     token,
-    locale
+    locale,
+    __debug
   });
   if (convertedOffer.errors)
     return Promise.resolve({ errors: convertedOffer.errors });

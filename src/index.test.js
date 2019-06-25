@@ -439,7 +439,7 @@ describe("BatchInitializePolicy", () => {
 		// const variables = batchInitializePolicyVariables
 		// const variables = batch2
 		const variables = batch3
-		const res = await createPolicy({ variables, token, __debug })
+		const res = await createPolicy({ variables, token, __debug: true })
 		console.log(JSON.stringify(res))
 		expect(res.policyId).toBeDefined()
 	})

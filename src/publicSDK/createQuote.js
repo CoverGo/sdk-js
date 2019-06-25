@@ -12,7 +12,8 @@ const createQuote = async ({ payload, token, locale }) => {
     payload,
     token,
     locale,
-    needsOfflineUnderwriting: true
+    needsOfflineUnderwriting: true,
+    debug = false
   });
   if (policyId.errors) return Promise.resolve({ errors: policyId.errors });
 

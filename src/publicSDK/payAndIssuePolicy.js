@@ -5,7 +5,8 @@ const payAndIssuePolicy = async ({
   paymentToken,
   policyId,
   token,
-  locale
+  locale,
+  __debug = false
 }) => {
   // ------------------------------------------------------------
   // 1 Process payment and issue
@@ -18,7 +19,8 @@ const payAndIssuePolicy = async ({
       userToken: paymentToken
     },
     token,
-    locale
+    locale,
+    __debug
   });
   if (issuedPolicy.errors)
     return Promise.resolve({ errors: issuedPolicy.errors });

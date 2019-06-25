@@ -1,16 +1,10 @@
 import { addLink } from "../atomicQueries";
 
-const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale }) => {
-  console.log('**************************')
-  console.log(JSON.stringify(payload.insuredPeople))
-  console.log('**************************')
-  console.log(JSON.stringify(createdEntities))
-  console.log('**************************')
-
-  // const allInsuredPeople = payload.holder.isOneOfInsured ? [payload.holder, ...payload.insuredPeople] : payload.insuredPeople
+const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale, __debug = false }) => {
+  
   // Connect all objects to holder
   const connectObjectsToHolder = payload.insuredObjects?.map((obj, i) =>
-    addLink({ variables: {linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }}, token, locale })
+    addLink({ variables: {linkInput: { sourceId: createdEntities.objectsIds[i], link: "owns", targetId: createdEntities.holderId }}, token, locale, __debug })
   )
 
   // Create links for relationships between individuals and holder
@@ -18,18 +12,16 @@ const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale
     (acc, person, i) => [
       ...acc,
       ...person.relationshipsToHolder.map(relationship =>
-        addLink({ variables: {linkInput: { sourceId: createdEntities.individualsIds[i], link: relationship, targetId: createdEntities.holderId }}, token, locale })
+        addLink({ variables: {linkInput: { sourceId: createdEntities.individualsIds[i], link: relationship, targetId: createdEntities.holderId }}, token, locale, __debug })
       ),
     ],
     []
   )
 
   const holderArray = [connectObjectsToHolder, createRelationshipsBetweenHolderAndIndividual];
-  console.log(holderArray)
   const connectionsToHolder = holderArray.filter(relationship => relationship !== undefined).reduce((acc, relationships) => [...acc, ...relationships], []);
-  console.log(connectionsToHolder)
   const res = await Promise.all(connectionsToHolder)
-  console.log(JSON.stringify(res))
+  if(__debug) console.log('connectionsToHolder', JSON.stringify(res))
 
   // If errors
   if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [...res.filter(batch => batch.errors)] })

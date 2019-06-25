@@ -1,7 +1,7 @@
 import { createIndividual } from "../atomicQueries"
 import { createObject } from "../atomicQueries"
 
-const batchCreateAllEntities = async ({ payload, token, locale }) => {
+const batchCreateAllEntities = async ({ payload, token, locale, __debug=false }) => {
   const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
 
   var holderIsOneOfInsured = holder.isOneOfInsured
@@ -16,9 +16,9 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   });
 
   const res = await Promise.all([
-    createIndividual({ variables: {createIndividualInput: holderCopy}, token, locale }),
-    ...insuredPeopleCopy.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale })),
-    ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale })),
+    createIndividual({ variables: {createIndividualInput: holderCopy}, token, locale, __debug }),
+    ...insuredPeopleCopy.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale, __debug })),
+    ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale, __debug })),
   ])
   
   // Check for errors
@@ -49,7 +49,7 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
 
   // create otherHolders
   const createOtherHoldersResponse = await Promise.all([
-    ...additionalPolicyHolder.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale }))
+    ...additionalPolicyHolder.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale, __debug }))
   ])
 
   // Check for errors

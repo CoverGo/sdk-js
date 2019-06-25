@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/CoverGo/sdk-js/compare/v1.5.8...v1.5.9) (2019-06-25)
+
+
+### Bug Fixes
+
+* **create entities and links:** update relationshipToHolder ([3d43b9e](https://github.com/CoverGo/sdk-js/commit/3d43b9e))
+
 ## [1.5.8](https://github.com/CoverGo/sdk-js/compare/v1.5.7...v1.5.8) (2019-06-25)
 
 

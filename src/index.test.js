@@ -175,6 +175,153 @@ const batch2 = {
 		},
 	],
 }
+const batch3 = {
+  "policyParticulars": {
+    "startDate": "2019-06-25T00:00:00.000Z",
+    "endDate": "2019-06-26",
+    "productId": {
+      "type": "travel",
+      "plan": "starr_travellead_essential_singleTrip",
+      "version": "1"
+    },
+    "pricing": {
+      "discountCodes": []
+    },
+    "referralCode": null,
+    "source": "COMPARISON",
+    "benefitOptions": [],
+    "values": [
+      {
+        "key": "isAnnual",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      {
+        "key": "isFamily",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      {
+        "key": "insureds",
+        "value": {
+          "arrayValue": [
+            {
+              "objectValue": [
+                {
+                  "key": "age",
+                  "value": {
+                    "numberValue": 36
+                  }
+                }
+              ]
+            },
+            {
+              "objectValue": [
+                {
+                  "key": "age",
+                  "value": {
+                    "numberValue": 35
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "destinationCountry",
+        "value": {
+          "arrayValue": [
+            {
+              "stringValue": "JPN"
+            }
+          ]
+        }
+      },
+      {
+        "key": "durationInDays",
+        "value": {
+          "numberValue": 2
+        }
+      },
+      {
+        "key": "startDate",
+        "value": {
+          "dateValue": "2019-06-25T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "holder": {
+    "type": "CUSTOMER",
+    "englishFirstName": "Alex",
+    "englishLastName": "Monty",
+    "dateOfBirth": "1982-06-26",
+    "isOneOfInsured": true,
+    "facts": [
+      {
+        "type": "isAnnual",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      {
+        "type": "isFamily",
+        "value": {
+          "booleanValue": false
+        }
+      }
+    ],
+    "contacts": [
+      {
+        "type": "email",
+        "value": "alex@covergo.com"
+      },
+      {
+        "type": "telephoneNumber",
+        "value": "12345678"
+      }
+    ],
+    "identities": [
+      {
+        "type": "hkid",
+        "value": "A1234563"
+      }
+    ],
+    "relationshipsToHolder": [
+      "self"
+    ]
+  },
+  "insuredObjects": [],
+  "insuredPeople": [
+    {
+      "englishFirstName": "Alex",
+      "englishLastName": "Two",
+      "dateOfBirth": "1983-08-14",
+      "contacts": [
+        {
+          "type": "email",
+          "value": null
+        },
+        {
+          "type": "telephoneNumber",
+          "value": null
+        }
+      ],
+      "identities": [
+        {
+          "type": "hkid",
+          "value": "A1234563"
+        }
+      ],
+      "relationshipsToHolder": [
+        "spouse"
+      ]
+    }
+  ]
+}
 
 let token
 const __debug = false
@@ -289,8 +436,9 @@ describe("Entity Creation", () => {
 describe("BatchInitializePolicy", () => {
 	it("should initialize a policy", async () => {
 		expect.assertions(1)
-		const variables = batchInitializePolicyVariables
+		// const variables = batchInitializePolicyVariables
 		// const variables = batch2
+		const variables = batch3
 		const res = await createPolicy({ variables, token, __debug })
 		console.log(JSON.stringify(res))
 		expect(res.policyId).toBeDefined()

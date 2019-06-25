@@ -9,7 +9,7 @@ const batchAddLinks = async ({ payload, policyId, createdEntities, token, locale
   )
 
   // Create links for relationships between individuals and holder
-  const createRelationshipsBetweenHolderAndIndividual = payload.allInsuredPeople?.filter(people => people.relationshipsToHolder).reduce(
+  const createRelationshipsBetweenHolderAndIndividual = allInsuredPeople?.filter(people => people.relationshipsToHolder).reduce(
     (acc, person, i) => [
       ...acc,
       ...person.relationshipsToHolder.map(relationship =>

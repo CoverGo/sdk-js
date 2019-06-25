@@ -33,8 +33,8 @@ const batchCreateAllEntities = async ({ payload, token, locale }) => {
   let individualsIds = individuals.map(item => item.data.createIndividual.createdStatus.id)
   const objectsIds = objects.map(item => item.data.createObject.createdStatus.id)
   const holderId = res[0].data.createIndividual.createdStatus.id
-  if(holderIsOneOfInsured) {
-    individualsIds = [holderId, ...individualsIds]
+  if(!holderIsOneOfInsured) {
+    individualsIds = [...individualsIds].slice(1)
   }
 
   if (additionalPolicyHolder === null) {

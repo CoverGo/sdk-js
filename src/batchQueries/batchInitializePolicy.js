@@ -52,7 +52,19 @@ const batchInitializePolicy = async ({ payload, createdEntities, token, locale }
   const { startDate, endDate, productId, pricing, referralCode, source, values } = payload.policyParticulars
 
 
-  const initializePolicyInput = { holderId, insuredIds, benefitOptions, startDate, endDate, productId, pricing, referralCode, source, values, otherHolderIds }
+  const initializePolicyInput = {
+    holderId,
+    insuredIds,
+    // benefitOptions, 
+    startDate, 
+    endDate, 
+    productId, 
+    pricing, 
+    referralCode, 
+    source, 
+    values, 
+    otherHolderIds
+  }
   
   // Initialize policy
   const res = await initializePolicy({

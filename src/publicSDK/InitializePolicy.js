@@ -55,9 +55,10 @@ const createPolicy = async ({
   // ------------------------------------------------------------
   // 4 Add offer to that policy return policy Id if needsOfflineUnderwriting === true
   // ------------------------------------------------------------
-  const { productId, pricing } = variables.policyParticulars;
+  const { productId, pricing, benefitOptions } = variables.policyParticulars;
   const offerInput = {
     productId,
+    benefitOptions,
     premium: pricing
     // ...pricing?.discountCodes && {premium: { discountCodes: pricing.discountCodes }} // pricing should be added to maptos from crm to allow overrides, but not from coverquote
   };

@@ -1,3 +1,10 @@
+## [1.5.12](https://github.com/CoverGo/sdk-js/compare/v1.5.11...v1.5.12) (2019-06-25)
+
+
+### Bug Fixes
+
+* **add links:** correct linking ([41867ff](https://github.com/CoverGo/sdk-js/commit/41867ff))
+
 ## [1.5.11](https://github.com/CoverGo/sdk-js/compare/v1.5.10...v1.5.11) (2019-06-25)
 
 

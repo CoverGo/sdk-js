@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/CoverGo/sdk-js/compare/v1.5.3...v1.5.4) (2019-06-25)
+
+
+### Bug Fixes
+
+* **holder id:** add holderId to individualsIds if is one of insured ([05d3edc](https://github.com/CoverGo/sdk-js/commit/05d3edc))
+
 ## [1.5.3](https://github.com/CoverGo/sdk-js/compare/v1.5.2...v1.5.3) (2019-06-24)
 
 

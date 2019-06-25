@@ -1,6 +1,6 @@
 import { createPolicy } from "./";
 
-const createQuote = async ({ payload, token, locale }) => {
+const createQuote = async ({ payload, token, locale, __debug }) => {
   // Create quote is actually create policy without pricing and product
   // And adding offer to that policy where we put product and pricing
 

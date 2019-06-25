@@ -1,3 +1,10 @@
+## [1.5.8](https://github.com/CoverGo/sdk-js/compare/v1.5.7...v1.5.8) (2019-06-25)
+
+
+### Bug Fixes
+
+* **create individuals:** delete relationships from copy ([020fe14](https://github.com/CoverGo/sdk-js/commit/020fe14))
+
 ## [1.5.7](https://github.com/CoverGo/sdk-js/compare/v1.5.6...v1.5.7) (2019-06-25)
 
 

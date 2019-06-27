@@ -24,7 +24,7 @@ const createEntityByType = async (entity, token, locale, __debug) => {
   const {entityType, tempId, isHolder, isOtherHolder, isInsured, links, ...baseEntity } = entity
   apiParams.variables = { [inputTypeMappingForType[entityType]]: baseEntity }
   const res = await functionMappingForType[entityType]({...apiParams})
-  if(res.errors && res.errors.length) return { errors, ...baseEntity }
+  if(res.errors && res.errors.length) return { errors: res.errors, ...baseEntity }
   const systemId = await res.data[dataKeyMappingForType[entityType]].createdStatus.id
   return { systemId, ...entity }
 }

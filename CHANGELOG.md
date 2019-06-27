@@ -1,3 +1,10 @@
+## [1.5.15](https://github.com/CoverGo/sdk-js/compare/v1.5.14...v1.5.15) (2019-06-27)
+
+
+### Bug Fixes
+
+* **query:** add recursive values ([fbac716](https://github.com/CoverGo/sdk-js/commit/fbac716))
+
 ## [1.5.14](https://github.com/CoverGo/sdk-js/compare/v1.5.13...v1.5.14) (2019-06-27)
 
 

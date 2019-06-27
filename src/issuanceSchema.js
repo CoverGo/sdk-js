@@ -15,6 +15,8 @@
 
 // NOTE: Should we handle transactional things? If something fails, delete everything?
 // - not now I guess, it can get rather tedious and increases complexity
+// we have removed holder, objects people from schema
+
 
 export default {
   policyParticulars: {

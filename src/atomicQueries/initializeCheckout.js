@@ -1,6 +1,6 @@
 import { gql } from "../gql"
 import { PricesFragment } from "./fragments/pricesOnProduct"
-import { TreeValuesFragment } from "./fragments/treeValuesOnScalarValue"
+import { recursiveValues } from "../atomicQueries/helpers/recursiveValues"
 
 const initializeCheckout = gql`
 	query initializeCheckout(
@@ -22,8 +22,9 @@ const initializeCheckout = gql`
 				benefits(typeIds: $typeIds) {
 					typeId
 					optionKey
-					value2 {
-						...TreeValues
+					formattedValue: value
+					value: value2 {
+						${recursiveValues()}
 					}
 				}
 				...Prices
@@ -43,6 +44,5 @@ const initializeCheckout = gql`
 		}
 	}
 	${PricesFragment}
-	${TreeValuesFragment}
 `
 export { initializeCheckout }

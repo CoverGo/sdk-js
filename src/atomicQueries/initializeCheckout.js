@@ -1,5 +1,6 @@
 import { gql } from "../gql"
 import { PricesFragment } from "./fragments/pricesOnProduct"
+import { TreeValuesFragment } from "./fragments/treeValuesOnScalarValue"
 
 const initializeCheckout = gql`
 	query initializeCheckout(
@@ -8,6 +9,7 @@ const initializeCheckout = gql`
 		$discountCodes: [String]
 		$benefitOptions: [benefitOptionInput]
 		$hasAdvisorId: Boolean = false
+		$typeIds: [String]
 	) {
 		products: products_2(where: $where, values: $values) {
 			list {
@@ -16,6 +18,13 @@ const initializeCheckout = gql`
 					plan
 					type
 					version
+				}
+				benefits(typeIds: $typeIds) {
+					typeId
+					optionKey
+					value2 {
+						...TreeValues
+					}
 				}
 				...Prices
 				insurer {
@@ -34,5 +43,6 @@ const initializeCheckout = gql`
 		}
 	}
 	${PricesFragment}
+	${TreeValuesFragment}
 `
 export { initializeCheckout }

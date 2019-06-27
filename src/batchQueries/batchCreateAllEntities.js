@@ -1,69 +1,45 @@
 import { createIndividual } from "../atomicQueries"
 import { createObject } from "../atomicQueries"
 
+
+const inputTypeMappingForType = {
+  individual: 'createIndividualInput',
+  object: 'createObjectInput',
+  company: 'createCompanyInput'
+}
+
+const functionMappingForType = {
+  individual: createIndividual,
+  object: createObject
+}
+
+const dataKeyMappingForType = {
+  individual: 'createIndividual',
+  object: 'createObject',
+  company: 'createCompany'
+}
+
+const createEntityByType = async (entity, token, locale, __debug) => {
+  const apiParams = {token, locale, __debug}
+  const {entityType, tempId, isHolder, isOtherHolder, isInsured, links, ...baseEntity } = entity
+  apiParams.variables = { [inputTypeMappingForType[entityType]]: baseEntity }
+  const res = await functionMappingForType[entityType]({...apiParams})
+  if(res.errors && res.errors.length) return { errors, ...baseEntity }
+  const systemId = await res.data[dataKeyMappingForType[entityType]].createdStatus.id
+  return { systemId, ...entity }
+}
+
 const batchCreateAllEntities = async ({ payload, token, locale, __debug=false }) => {
-  const { insuredPeople = [], insuredObjects = [], additionalPolicyHolder = null, holder } = payload;
+  const createdEntities = await Promise.all(payload.entities
+    .map(entity => createEntityByType(entity, token, locale, __debug))
+  )
 
-  var holderIsOneOfInsured = holder.isOneOfInsured
-  const holderCopy = JSON.parse(JSON.stringify(holder))
-  delete holderCopy.isOneOfInsured
-  delete holderCopy.relationshipsToHolder
-
-  const insuredPeopleCopy = JSON.parse(JSON.stringify(insuredPeople))
-
-  insuredPeopleCopy.forEach(person => {
-    delete person.relationshipsToHolder
-  });
-
-  const res = await Promise.all([
-    createIndividual({ variables: {createIndividualInput: holderCopy}, token, locale, __debug }),
-    ...insuredPeopleCopy.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale, __debug })),
-    ...insuredObjects.map(item => createObject({ variables: {createObjectInput: item}, token, locale, __debug })),
-  ])
-  
-  // Check for errors
-  if (res.find(batch => batch.errors)) return Promise.resolve({ errors: [...res.filter(batch => batch.errors)] })
-
-  // Return object with created entities ids
-  const individualsAndObjects = res.splice(1, res.length)
-  const individuals = individualsAndObjects.filter(item => {
-    return item.data.createIndividual
-  })
-  const objects = individualsAndObjects.filter(item => item.data.createObject)
-  let individualsIds = individuals.map(item => item.data.createIndividual.createdStatus.id)
-  const objectsIds = objects.map(item => item.data.createObject.createdStatus.id)
-  const holderId = res[0].data.createIndividual.createdStatus.id
-  if(!holderIsOneOfInsured) {
-    individualsIds = [...individualsIds].slice(1)
+  // return top level errors if any created entity has errors
+  if (createdEntities.find(entity => entity.errors && entity.errors.length)) {
+    return Promise.resolve({ errors: [...createdEntities.reduce((acc, cur) => [...acc, ...cur.errors], [])]})
   }
 
-  if (additionalPolicyHolder === null) {
-    
-    return Promise.resolve({
-      holderId,
-      individualsIds,
-      objectsIds,
-      otherHolderIds: null,
-    })
-  }
-
-  // create otherHolders
-  const createOtherHoldersResponse = await Promise.all([
-    ...additionalPolicyHolder.map(item => createIndividual({ variables: {createIndividualInput: item}, token, locale, __debug }))
-  ])
-
-  // Check for errors
-  if (createOtherHoldersResponse.find(batch => batch.errors)) return Promise.resolve({ errors: [...createOtherHoldersResponse.filter(batch => batch.errors)] })
-
-  const otherHolders   = createOtherHoldersResponse.filter(item => item.data.createIndividual);
-  const otherHolderIds = otherHolders.map(item => item.data.createIndividual.createdStatus.id);
-  
-  return Promise.resolve({
-    holderId,
-    individualsIds,
-    objectsIds,
-    otherHolderIds,
-  })
+  return Promise.resolve(createdEntities)
 }
 
 export { batchCreateAllEntities }

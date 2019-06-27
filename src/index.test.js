@@ -4,13 +4,14 @@ import { singleProductVariables, multiproductvariables, batchInitializePolicyVar
 import { singleProduct } from "./atomicQueries/singleProduct"
 import { createPolicy } from "./publicSDK/InitializePolicy"
 
-const batch2 = {
+const batchWithEntities = {
 	policyParticulars: {
-		startDate: null,
+		startDate: '2019-06-27T00:00:00.000Z',
+		endDate: '2019-06-28T00:00:00.000Z',
 		productId: {
-			type: "home",
-			plan: "chubb_myhomeguard_occupier_plana",
-			version: null,
+			type: "travel",
+			plan: "starr_travellead_essential_singleTrip",
+			version: 1,
 		},
 		pricing: {
 			discountCodes: [],
@@ -19,106 +20,38 @@ const batch2 = {
 		source: "COMPARISON",
 		benefitOptions: [],
 		values: [
-			{
-				key: "isOwner",
-				values: {
-					booleanValue: false,
-				},
-			},
-			{
-				key: "isOccupier",
-				values: {
-					booleanValue: true,
-				},
-			},
-			{
-				key: "insureds",
-				values: {
-					arrayValue: [
-						{
-							objectValue: [
-								{
-									key: "ageOfBuilding",
-									values: {
-										numberValue: 17,
-									},
-								},
-								{
-									key: "grossAreaInSqFt",
-									values: {
-										numberValue: 500,
-									},
-								},
-								{
-									key: "buildingType",
-									values: {
-										stringValue: "multiStoreyBuilding",
-									},
-								},
-								{
-									key: "numberOfFloors",
-									values: {
-										numberValue: 4,
-									},
-								},
-							],
-						},
-					],
-				},
-			},
 		],
 	},
-	holder: {
-		englishFirstName: null,
-		englishLastName: null,
-		gender: "male",
-		dateOfBirth: null,
-		contacts: [
-			{
-				type: "email",
-				value: null,
-			},
-			{
-				type: "telephoneNumber",
-				value: null,
-			},
-		],
-		identities: [
-			{
-				type: "hkid",
-				value: null,
-			},
-		],
-		addresses: [
-			{
-				type: "address1",
-				fields: [
-					{
-						type: "address1",
-						value: null,
-					},
-					{
-						type: "address2",
-						value: null,
-					},
-					{
-						type: "address3",
-						value: null,
-					},
-					{
-						type: "district",
-						value: null,
-					},
-					{
-						type: "territory",
-						value: null,
-					},
-				],
-			},
-		],
-	},
-	insuredObjects: [
+	entities: [
 		{
+			tempId: 'holder1',
+			entityType: 'individual',
+			isHolder: true,
+			isInsured: true,
+			links: [{
+				tempTargetId: 'holder1',
+				link: 'self'
+			}],
+			englishFirstName: null,
+			englishLastName: null,
+			gender: "male",
+			dateOfBirth: null,
+			contacts: [
+				{
+					type: "email",
+					value: null,
+				},
+				{
+					type: "telephoneNumber",
+					value: null,
+				},
+			],
+			identities: [
+				{
+					type: "hkid",
+					value: null,
+				},
+			],
 			addresses: [
 				{
 					type: "address1",
@@ -146,34 +79,8 @@ const batch2 = {
 					],
 				},
 			],
-			facts: [
-				{
-					type: "ageOfBuilding",
-					values: {
-						numberValue: 17,
-					},
-				},
-				{
-					type: "grossAreaInSqFt",
-					values: {
-						numberValue: 500,
-					},
-				},
-				{
-					type: "buildingType",
-					values: {
-						stringValue: "multiStoreyBuilding",
-					},
-				},
-				{
-					type: "numberOfFloors",
-					values: {
-						numberValue: 4,
-					},
-				},
-			],
-		},
-	],
+		}
+	]
 }
 const batch3 = {
   "policyParticulars": {
@@ -438,7 +345,8 @@ describe("BatchInitializePolicy", () => {
 		expect.assertions(1)
 		// const variables = batchInitializePolicyVariables
 		// const variables = batch2
-		const variables = batch3
+		// const variables = batch3
+		const variables = batchWithEntities
 		const res = await createPolicy({ variables, token, __debug: true })
 		console.log(JSON.stringify(res))
 		expect(res.policyId).toBeDefined()

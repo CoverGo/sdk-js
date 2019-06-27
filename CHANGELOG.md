@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/CoverGo/sdk-js/compare/v1.5.15...v2.0.0) (2019-06-27)
+
+
+### Features
+
+* **schema:** convert schema entities to entities ([af1c2d6](https://github.com/CoverGo/sdk-js/commit/af1c2d6))
+* **schema:** updated schema to use entities ([89d2263](https://github.com/CoverGo/sdk-js/commit/89d2263))
+
+
+### BREAKING CHANGES
+
+* **schema:** old schemas are retired
+
 ## [1.5.15](https://github.com/CoverGo/sdk-js/compare/v1.5.14...v1.5.15) (2019-06-27)
 
 

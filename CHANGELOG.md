@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/CoverGo/sdk-js/compare/v2.0.0...v2.0.1) (2019-06-27)
+
+
+### Bug Fixes
+
+* **create entities:** fixed error tracking ([1ed6473](https://github.com/CoverGo/sdk-js/commit/1ed6473))
+
 # [2.0.0](https://github.com/CoverGo/sdk-js/compare/v1.5.15...v2.0.0) (2019-06-27)
 
 

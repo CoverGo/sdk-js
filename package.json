@@ -1,6 +1,6 @@
 {
   "name": "@covergo/covergo-sdk",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Covergo SDK for node and the browser",
   "keywords": [],
   "homepage": "https://github.com/CoverGo/sdk-js#readme",

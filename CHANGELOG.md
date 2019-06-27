@@ -1,3 +1,11 @@
+## [1.5.14](https://github.com/CoverGo/sdk-js/compare/v1.5.13...v1.5.14) (2019-06-27)
+
+
+### Bug Fixes
+
+* **query:** add benefits to initializeCheckout ([ae31cc2](https://github.com/CoverGo/sdk-js/commit/ae31cc2))
+* **query:** fix fragment export ([cd1d86a](https://github.com/CoverGo/sdk-js/commit/cd1d86a))
+
 ## [1.5.13](https://github.com/CoverGo/sdk-js/compare/v1.5.12...v1.5.13) (2019-06-25)
 
 

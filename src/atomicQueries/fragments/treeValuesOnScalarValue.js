@@ -1,4 +1,4 @@
-const treeValuesFragment = /* GraphQL */ `
+const TreeValuesFragment = /* GraphQL */ `
 	fragment Value on scalarValue {
 		booleanValue
 		dateValue
@@ -29,4 +29,4 @@ const treeValuesFragment = /* GraphQL */ `
 	}
 `
 
-export { treeValuesFragment }
+export { TreeValuesFragment }

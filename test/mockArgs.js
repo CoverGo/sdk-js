@@ -418,5 +418,93 @@ const batchInitializePolicyVariables = {
   ]
 }
 
+const initalizeCheckoutVariables = {
+    "discountCodes": [],
+    "where": {
+      "and": [
+        {
+          "productId": {
+            "type": "home"
+          }
+        },
+        {
+          "productId": {
+            "plan": "asia_superior_home_occupier_excellence"
+          }
+        },
+        {
+          "productId": {
+            "version": null
+          }
+        }
+      ]
+    },
+    "values": [
+      {
+        "key": "isOwner",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      {
+        "key": "isOccupier",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      {
+        "key": "insureds",
+        "value": {
+          "arrayValue": [
+            {
+              "objectValue": [
+                {
+                  "key": "ageOfBuilding",
+                  "value": {
+                    "numberValue": 17
+                  }
+                },
+                {
+                  "key": "grossAreaInSqFt",
+                  "value": {
+                    "numberValue": 500
+                  }
+                },
+                {
+                  "key": "buildingType",
+                  "value": {
+                    "stringValue": "multiStoreyBuilding"
+                  }
+                },
+                {
+                  "key": "numberOfFloors",
+                  "value": {
+                    "numberValue": 4
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "home_worldwide_personal_belongings",
+        "value": {
+          "stringValue": "option_1"
+        }
+      },
+      {
+        "key": "home_domestic_helper",
+        "value": {
+          "stringValue": "option_1"
+        }
+      }
+    ],
+    "typeIds": [
+      "home_worldwide_personal_belongings",
+      "home_domestic_helper"
+    ]
+}
+
 /* istanbul ignore next */
-export { singleProductVariables, multiproductvariables, mockIssuanceObject, batchInitializePolicyVariables }
+export { singleProductVariables, multiproductvariables, mockIssuanceObject, batchInitializePolicyVariables,initalizeCheckoutVariables }

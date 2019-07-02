@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/CoverGo/sdk-js/compare/v2.0.1...v2.0.2) (2019-07-02)
+
+
+### Bug Fixes
+
+* **query:** add initialize checkout benefit name ([213bd51](https://github.com/CoverGo/sdk-js/commit/213bd51))
+
 ## [2.0.1](https://github.com/CoverGo/sdk-js/compare/v2.0.0...v2.0.1) (2019-06-27)
 
 

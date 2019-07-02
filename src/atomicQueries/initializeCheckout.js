@@ -20,6 +20,7 @@ const initializeCheckout = gql`
 					version
 				}
 				benefits(typeIds: $typeIds) {
+					name
 					typeId
 					optionKey
 					formattedValue: value

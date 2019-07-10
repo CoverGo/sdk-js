@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/CoverGo/sdk-js/compare/v2.0.2...v2.0.3) (2019-07-10)
+
+
+### Bug Fixes
+
+* **prices:** add calulationLogic to Prices ([fe3bfdc](https://github.com/CoverGo/sdk-js/commit/fe3bfdc))
+
 ## [2.0.2](https://github.com/CoverGo/sdk-js/compare/v2.0.1...v2.0.2) (2019-07-02)
 
 

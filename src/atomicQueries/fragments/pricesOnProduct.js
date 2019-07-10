@@ -8,6 +8,7 @@ const PricesFragment = /* GraphQL */ `
 			currencyCode
 
 			appliedDiscounts {
+				calculationLogic
 				code
 				ratio
 				flat

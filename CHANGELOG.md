@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/CoverGo/sdk-js/compare/v2.0.3...v2.0.4) (2019-07-11)
+
+
+### Bug Fixes
+
+* **fragment:** enhance prices fragment ([1201f0f](https://github.com/CoverGo/sdk-js/commit/1201f0f))
+
 ## [2.0.3](https://github.com/CoverGo/sdk-js/compare/v2.0.2...v2.0.3) (2019-07-10)
 
 

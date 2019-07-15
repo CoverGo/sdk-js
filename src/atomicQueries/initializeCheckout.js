@@ -7,7 +7,6 @@ const initializeCheckout = gql`
 		$where: productWhereInput
 		$values: [keyValueInput]
 		$discountCodes: [String]
-		$benefitOptions: [benefitOptionInput]
 		$hasAdvisorId: Boolean = false
 		$typeIds: [String]
 	) {

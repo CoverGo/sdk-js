@@ -1,6 +1,6 @@
 const PricesFragment = /* GraphQL */ `
 	fragment Prices on product {
-		pricing(values: $values, benefitOptions: $benefitOptions, discountCodes: $discountCodes) {
+		pricing(values: $values, discountCodes: $discountCodes) {
 			formattedPrice
 			originalPrice
 			formattedOriginalPrice

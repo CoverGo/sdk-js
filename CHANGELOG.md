@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/CoverGo/sdk-js/compare/v2.0.4...v2.0.5) (2019-07-15)
+
+
+### Bug Fixes
+
+* **query:** remove deprecated fields ([20ebc44](https://github.com/CoverGo/sdk-js/commit/20ebc44))
+
 ## [2.0.4](https://github.com/CoverGo/sdk-js/compare/v2.0.3...v2.0.4) (2019-07-11)
 
 

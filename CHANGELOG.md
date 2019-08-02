@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/CoverGo/sdk-js/compare/v2.1.0...v2.1.1) (2019-08-02)
+
+
+### Bug Fixes
+
+* **gqles5:** network error via throw ([e303e56](https://github.com/CoverGo/sdk-js/commit/e303e56))
+
 # [2.1.0](https://github.com/CoverGo/sdk-js/compare/v2.0.5...v2.1.0) (2019-08-02)
 
 

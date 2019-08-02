@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/CoverGo/sdk-js/compare/v2.0.5...v2.1.0) (2019-08-02)
+
+
+### Features
+
+* **gql:** add gql for es5 ([cb377ff](https://github.com/CoverGo/sdk-js/commit/cb377ff))
+
 ## [2.0.5](https://github.com/CoverGo/sdk-js/compare/v2.0.4...v2.0.5) (2019-07-15)
 
 

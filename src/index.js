@@ -28,4 +28,4 @@ export { createPolicy, createQuote, payAndIssuePolicy } from "./publicSDK"
 
 export { gql } from "./gql"
 
-// export default gql
+export { gqlES5 } from "./gql/gqlES5.js"

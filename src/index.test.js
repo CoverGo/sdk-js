@@ -3,11 +3,12 @@ import { benefitCategories, login, productListing, checkoutConfig, createIndivid
 import { singleProductVariables, multiproductvariables, batchInitializePolicyVariables, initalizeCheckoutVariables } from "../test/mockArgs"
 import { singleProduct } from "./atomicQueries/singleProduct"
 import { createPolicy } from "./publicSDK/InitializePolicy"
+import { gqlES5 } from "./gql/gqlES5"
 
 const batchWithEntities = {
 	policyParticulars: {
-		startDate: '2019-06-27T00:00:00.000Z',
-		endDate: '2019-06-28T00:00:00.000Z',
+		startDate: "2019-06-27T00:00:00.000Z",
+		endDate: "2019-06-28T00:00:00.000Z",
 		productId: {
 			type: "travel",
 			plan: "starr_travellead_essential_singleTrip",
@@ -19,19 +20,20 @@ const batchWithEntities = {
 		referralCode: null,
 		source: "COMPARISON",
 		benefitOptions: [],
-		values: [
-		],
+		values: [],
 	},
 	entities: [
 		{
-			tempId: 'holder1',
-			entityType: 'individual',
+			tempId: "holder1",
+			entityType: "individual",
 			isHolder: true,
 			isInsured: true,
-			links: [{
-				tempTargetId: 'holder1',
-				link: 'self'
-			}],
+			links: [
+				{
+					tempTargetId: "holder1",
+					link: "self",
+				},
+			],
 			englishFirstName: null,
 			englishLastName: null,
 			gender: "male",
@@ -79,8 +81,8 @@ const batchWithEntities = {
 					],
 				},
 			],
-		}
-	]
+		},
+	],
 }
 const batch3 = {
 	policyParticulars: {
@@ -227,121 +229,121 @@ const batch3 = {
 }
 
 const travelBatch = {
-  "policyParticulars": {
-    "startDate": "2019-06-27T00:00:00.000Z",
-    "endDate": "2019-06-28",
-    "productId": {
-      "type": "travel",
-      "plan": "starr_travellead_essential_singleTrip",
-      "version": "1"
-    },
-    "pricing": {
-      "discountCodes": []
-    },
-    "source": "COMPARISON",
-    "benefitOptions": [],
-    "values": [
-      {
-        "key": "isAnnual",
-        "value": {
-          "booleanValue": false
-        }
-      },
-      {
-        "key": "isFamily",
-        "value": {
-          "booleanValue": false
-        }
-      },
-      {
-        "key": "insureds",
-        "value": {
-          "arrayValue": [
-            {
-              "objectValue": [
-                {
-                  "key": "age",
-                  "value": {
-                    "numberValue": 37
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "key": "destinationCountry",
-        "value": {
-          "arrayValue": [
-            {
-              "stringValue": "JPN"
-            }
-          ]
-        }
-      },
-      {
-        "key": "durationInDays",
-        "value": {
-          "numberValue": 2
-        }
-      },
-      {
-        "key": "startDate",
-        "value": {
-          "dateValue": "2019-06-27T00:00:00.000Z"
-        }
-      }
-    ]
-  },
-  "entities": [
-    {
-			"type": "CUSTOMER",
-			"isInsured": true,
-			"isHolder": true,
-			"tempId": "person0",
-			"entityType": "individual",
-      "englishFirstName": "alex",
-      "englishLastName": "mon",
-      "dateOfBirth": "1982-06-26",
-      "links": [
-        {
-          "tempTargetId": "person0",
-          "link": "self"
-        }
-      ],
-      "facts": [
-        {
-          "type": "isAnnual",
-          "value": {
-            "booleanValue": true
-          }
-        },
-        {
-          "type": "isFamily",
-          "value": {
-            "booleanValue": false
-          }
-        }
-      ],
-      "contacts": [
-        {
-          "type": "email",
-          "value": "alex@covergo.com"
-        },
-        {
-          "type": "telephoneNumber",
-          "value": "12345678"
-        }
-      ],
-      "identities": [
-        {
-          "type": "hkid",
-          "value": "A1234563"
-        }
-      ]
-    }
-  ]
+	policyParticulars: {
+		startDate: "2019-06-27T00:00:00.000Z",
+		endDate: "2019-06-28",
+		productId: {
+			type: "travel",
+			plan: "starr_travellead_essential_singleTrip",
+			version: "1",
+		},
+		pricing: {
+			discountCodes: [],
+		},
+		source: "COMPARISON",
+		benefitOptions: [],
+		values: [
+			{
+				key: "isAnnual",
+				value: {
+					booleanValue: false,
+				},
+			},
+			{
+				key: "isFamily",
+				value: {
+					booleanValue: false,
+				},
+			},
+			{
+				key: "insureds",
+				value: {
+					arrayValue: [
+						{
+							objectValue: [
+								{
+									key: "age",
+									value: {
+										numberValue: 37,
+									},
+								},
+							],
+						},
+					],
+				},
+			},
+			{
+				key: "destinationCountry",
+				value: {
+					arrayValue: [
+						{
+							stringValue: "JPN",
+						},
+					],
+				},
+			},
+			{
+				key: "durationInDays",
+				value: {
+					numberValue: 2,
+				},
+			},
+			{
+				key: "startDate",
+				value: {
+					dateValue: "2019-06-27T00:00:00.000Z",
+				},
+			},
+		],
+	},
+	entities: [
+		{
+			type: "CUSTOMER",
+			isInsured: true,
+			isHolder: true,
+			tempId: "person0",
+			entityType: "individual",
+			englishFirstName: "alex",
+			englishLastName: "mon",
+			dateOfBirth: "1982-06-26",
+			links: [
+				{
+					tempTargetId: "person0",
+					link: "self",
+				},
+			],
+			facts: [
+				{
+					type: "isAnnual",
+					value: {
+						booleanValue: true,
+					},
+				},
+				{
+					type: "isFamily",
+					value: {
+						booleanValue: false,
+					},
+				},
+			],
+			contacts: [
+				{
+					type: "email",
+					value: "alex@covergo.com",
+				},
+				{
+					type: "telephoneNumber",
+					value: "12345678",
+				},
+			],
+			identities: [
+				{
+					type: "hkid",
+					value: "A1234563",
+				},
+			],
+		},
+	],
 }
 
 let token
@@ -472,5 +474,38 @@ describe("initializeCheckout", () => {
 		const res = await initializeCheckout({ variables: initalizeCheckoutVariables, token, __debug: true })
 		// console.log(JSON.stringify(res))
 		expect(res.data.products.list).toBeInstanceOf(Array)
+	})
+})
+
+describe("gqlForES5", () => {
+	it("should call query", async () => {
+		const variables = null
+		const query = `
+			query products{
+				products_2{
+					list{
+						name
+					}
+				}
+			}
+		`
+		const res = await gqlES5({ query, variables, locale: "en", token, __debug: true })
+		expect(res.data.products_2.list).toBeInstanceOf(Array)
+	})
+
+	it("should fail and return error", async () => {
+		const variables = null
+		const query = `
+			query productsFailure{
+				products_2X{
+					list{
+						name
+					}
+				}
+			}
+		`
+		const res = await gqlES5({ query, variables, locale: "en", token, __debug: true })
+		console.log(res)
+		expect(res.errors).toBeInstanceOf(Array)
 	})
 })

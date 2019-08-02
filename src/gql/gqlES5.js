@@ -36,7 +36,7 @@ const gqlES5 = async ({
 	if (__debug) console.log(res)
 
 	if (res.status >= 400) {
-		Promise.reject({ errors: [{ message: "Network error from GQL" }] })
+		throw new Error("Network error from GQL")
 	}
 
 	const resData = await res.json()

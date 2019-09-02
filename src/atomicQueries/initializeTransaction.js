@@ -5,6 +5,7 @@ const initializeTransaction = gql`
 		initializeTransaction(input: $input) {
 			errors
 			value {
+				httpMethod
 				token
 				transactionId
 				url

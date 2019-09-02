@@ -8,6 +8,17 @@ const initializeTransaction = gql`
 				token
 				transactionId
 				url
+				parameters {
+					objectValue {
+						key
+						value {
+							stringValue
+							numberValue
+							booleanValue
+							dateValue
+						}
+					}
+				}
 			}
 		}
 	}

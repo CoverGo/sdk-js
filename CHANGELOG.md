@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/CoverGo/sdk-js/compare/v2.1.1...v2.1.2) (2019-09-02)
+
+
+### Bug Fixes
+
+* **mutation:** initializeTransaction params ([9201c50](https://github.com/CoverGo/sdk-js/commit/9201c50))
+
 ## [2.1.1](https://github.com/CoverGo/sdk-js/compare/v2.1.0...v2.1.1) (2019-08-02)
 
 

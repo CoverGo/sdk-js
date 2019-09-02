@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/CoverGo/sdk-js/compare/v2.1.2...v2.1.3) (2019-09-02)
+
+
+### Bug Fixes
+
+* **mutation:** initTransaction httpMethod ([449726d](https://github.com/CoverGo/sdk-js/commit/449726d))
+
 ## [2.1.2](https://github.com/CoverGo/sdk-js/compare/v2.1.1...v2.1.2) (2019-09-02)
 
 

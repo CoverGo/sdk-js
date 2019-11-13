@@ -1,7 +1,7 @@
 import { fetch } from 'cross-fetch'
 // fix module dependencies
 
-const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = false, errorLocation = null} ={}) => {
+const coverFetch = async ({query, variables = {}, token = '', locale = "en", options = { url: "https://api.covergo.com/graphql"},  __debug = false, errorLocation = null} ={}) => {
   try {
     const method = "POST"
     const url = "https://api.covergo.com/graphql"
@@ -10,17 +10,18 @@ const coverFetch = async ({query, variables = {}, token = '', locale = "en", __d
 
     let json = JSON.stringify({query, variables})
 
-    const options = {
+    const opts = {
       method,
       headers: {
         "Content-Type": "application/json",
         "Accept-Language": locale,
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${token}`,
+        ...options.headers && options.headers
       },
       body: json
     }
     
-    let res = await fetch(url, options)
+    let res = await fetch(options.url, opts)
 
     /* istanbul ignore next */
     if (__debug) {

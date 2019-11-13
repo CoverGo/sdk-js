@@ -1,9 +1,9 @@
 import fetch from 'cross-fetch'
 
-const coverFetch = async ({query, variables = {}, token = '', locale = "en", __debug = false} ={}) => {
+const coverFetch = async ({query, variables = {}, token = '', locale = "en", options = { url: "https://api.covergo.com/graphql"}, __debug = false} ={}) => {
   try {
     const method = "POST"
-    const url = "https://api.covergo.com/graphql"
+    const url = options.url || "https://api.covergo.com/graphql"
     
     // if(!query) console.error("There was no query to send")
 
@@ -14,7 +14,8 @@ const coverFetch = async ({query, variables = {}, token = '', locale = "en", __d
       headers: {
         "Content-Type": "application/json",
         "Accept-Language": locale,
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${token}`,
+        ...options.headers && options.headers
       },
       body: json
     }

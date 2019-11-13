@@ -8,6 +8,7 @@ const gqlES5 = async ({
 	locale = null,
 	token = null,
 	headers = {},
+	options = { url: "https://api.covergo.com/graphql"},
 	__debug = false,
 }) => {
 	if (!query) console.error("GQL: there was no query to send")
@@ -22,17 +23,18 @@ const gqlES5 = async ({
 
 	let json = JSON.stringify({ query, variables })
 
-	const options = {
+	const opts = {
 		method,
 		headers: {
 			"Content-Type": "application/json",
 			"Accept-Language": locale,
 			Authorization: `Bearer ${token}`,
+			...options.headers && options.headers
 		},
 		body: json,
 	}
 
-	let res = await fetch(url, options)
+	let res = await fetch(options.url, opts)
 	if (__debug) console.log(res)
 
 	if (res.status >= 400) {

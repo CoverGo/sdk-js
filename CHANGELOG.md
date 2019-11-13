@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/CoverGo/sdk-js/compare/v2.1.3...v2.1.4) (2019-11-13)
+
+
+### Bug Fixes
+
+* **gql:** add options param to gql calls for dynamic endpoints ([66cc1f1](https://github.com/CoverGo/sdk-js/commit/66cc1f1))
+
 ## [2.1.3](https://github.com/CoverGo/sdk-js/compare/v2.1.2...v2.1.3) (2019-09-02)
 
 

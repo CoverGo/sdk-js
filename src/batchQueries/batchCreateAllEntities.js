@@ -19,7 +19,7 @@ const dataKeyMappingForType = {
   company: 'createCompany'
 }
 
-const createEntityByType = async (entity, token, locale, options = { url: "https://api.covergo.com/graphql"}, __debug) => {
+const createEntityByType = async (entity, token, locale, options, __debug) => {
   const apiParams = {token, locale, options, __debug}
   const {entityType, tempId, isHolder, isOtherHolder, isInsured, links, ...baseEntity } = entity
   apiParams.variables = { [inputTypeMappingForType[entityType]]: baseEntity }
@@ -31,7 +31,7 @@ const createEntityByType = async (entity, token, locale, options = { url: "https
 
 const batchCreateAllEntities = async ({ payload, token, locale, options = { url: "https://api.covergo.com/graphql"}, __debug=false }) => {
   const createdEntities = await Promise.all(payload.entities
-    .map(entity => createEntityByType(entity, token, locale, options = { url: "https://api.covergo.com/graphql"}, __debug))
+    .map(entity => createEntityByType(entity, token, locale, options, __debug))
   )
 
   // return top level errors if any created entity has errors

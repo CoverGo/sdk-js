@@ -1,3 +1,11 @@
+## [2.1.5](https://github.com/CoverGo/sdk-js/compare/v2.1.4...v2.1.5) (2019-11-14)
+
+
+### Bug Fixes
+
+* **gql:** add options to gql function parameter obj ([8a37584](https://github.com/CoverGo/sdk-js/commit/8a37584))
+* **test:** debug set to false ([c343b1f](https://github.com/CoverGo/sdk-js/commit/c343b1f))
+
 ## [2.1.4](https://github.com/CoverGo/sdk-js/compare/v2.1.3...v2.1.4) (2019-11-13)
 
 

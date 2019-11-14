@@ -1,3 +1,10 @@
+## [2.1.7](https://github.com/CoverGo/sdk-js/compare/v2.1.6...v2.1.7) (2019-11-14)
+
+
+### Bug Fixes
+
+* **createalle:** fix batchcreateallenentities ([68d0f88](https://github.com/CoverGo/sdk-js/commit/68d0f88))
+
 ## [2.1.6](https://github.com/CoverGo/sdk-js/compare/v2.1.5...v2.1.6) (2019-11-14)
 
 

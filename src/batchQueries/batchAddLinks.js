@@ -1,6 +1,6 @@
 import { addLink } from "../atomicQueries";
 
-const batchAddLinks = async ({ createdEntities, token, locale, __debug = false }) => {
+const batchAddLinks = async ({ createdEntities, token, locale, options = { url: "https://api.covergo.com/graphql"}, __debug = false }) => {
   
   // process and add links
   const addLinksResults = await Promise.all(createdEntities.reduce((acc, {systemId, links = []}) => {
@@ -16,6 +16,7 @@ const batchAddLinks = async ({ createdEntities, token, locale, __debug = false }
           },
           token,
           locale,
+          options,
           __debug
         })
       })]

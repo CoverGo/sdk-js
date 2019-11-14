@@ -6,6 +6,7 @@ const payAndIssuePolicy = async ({
   policyId,
   token,
   locale,
+  options = { url: "https://api.covergo.com/graphql"},
   __debug = false
 }) => {
   // ------------------------------------------------------------
@@ -20,6 +21,7 @@ const payAndIssuePolicy = async ({
     },
     token,
     locale,
+    options,
     __debug
   });
   if (issuedPolicy.errors)

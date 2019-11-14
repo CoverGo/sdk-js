@@ -10,7 +10,7 @@ mutation addLink($linkInput: createLinkInput!){
 }
 `;
 
-export default async ({ input, token, locale }) => {
+export default async ({ input, token, locale, options = { url: "https://api.covergo.com/graphql"} }) => {
   // linkObject:
   // - targetId === object id
   // - sourceId === holder id
@@ -20,6 +20,7 @@ export default async ({ input, token, locale }) => {
     query,
     variables: { linkInput: input },
     token,
+    options,
     locale
   });
 

@@ -1,6 +1,6 @@
 import { initializePolicy } from "../atomicQueries"
 
-const batchInitializePolicy = async ({ payload, createdEntities, token, locale, __debug = false }) => {
+const batchInitializePolicy = async ({ payload, createdEntities, token, locale, options = { url: "https://api.covergo.com/graphql"}, __debug = false }) => {
 	// We are also passing these
 	const { startDate, endDate, productId, referralCode, source, values } = payload.policyParticulars
 
@@ -25,6 +25,7 @@ const batchInitializePolicy = async ({ payload, createdEntities, token, locale, 
 		variables: { initializePolicyInput },
 		token,
 		locale,
+		options,
 		__debug,
 	})
 

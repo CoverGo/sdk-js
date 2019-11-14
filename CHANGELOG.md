@@ -1,3 +1,10 @@
+## [2.1.6](https://github.com/CoverGo/sdk-js/compare/v2.1.5...v2.1.6) (2019-11-14)
+
+
+### Bug Fixes
+
+* **methods:** add options to all exported methods ([6c70b59](https://github.com/CoverGo/sdk-js/commit/6c70b59))
+
 ## [2.1.5](https://github.com/CoverGo/sdk-js/compare/v2.1.4...v2.1.5) (2019-11-14)
 
 

@@ -451,7 +451,7 @@ describe("Entity Creation", () => {
 		expect.assertions(1)
 		const variables = { createIndividualInput: { englishFirstName: { name: "Lura" }, englishLastName: "Schaden" } }
 		const res = await createIndividual({ variables, token, __debug })
-		console.log(JSON.stringify(res))
+		// console.log(JSON.stringify(res))
 		expect(res.errors).toBeInstanceOf(Array)
 	})
 })
@@ -463,15 +463,15 @@ describe("BatchInitializePolicy", () => {
 		// const variables = batch2
 		// const variables = batch3
 		const variables = travelBatch
-		const res = await createPolicy({ variables, token, __debug: true })
-		console.log(JSON.stringify(res))
+		const res = await createPolicy({ variables, token, __debug })
+		// console.log(JSON.stringify(res))
 		expect(res.policyId).toBeDefined()
 	})
 })
 
 describe("initializeCheckout", () => {
 	it("should initialize checkout", async () => {
-		const res = await initializeCheckout({ variables: initalizeCheckoutVariables, token, __debug: true })
+		const res = await initializeCheckout({ variables: initalizeCheckoutVariables, token, __debug })
 		// console.log(JSON.stringify(res))
 		expect(res.data.products.list).toBeInstanceOf(Array)
 	})
@@ -489,7 +489,7 @@ describe("gqlForES5", () => {
 				}
 			}
 		`
-		const res = await gqlES5({ query, variables, locale: "en", token, __debug: true })
+		const res = await gqlES5({ query, variables, locale: "en", token, __debug })
 		expect(res.data.products_2.list).toBeInstanceOf(Array)
 	})
 
@@ -504,8 +504,8 @@ describe("gqlForES5", () => {
 				}
 			}
 		`
-		const res = await gqlES5({ query, variables, locale: "en", token, __debug: true })
-		console.log(res)
+		const res = await gqlES5({ query, variables, locale: "en", token, __debug })
+		// console.log(res)
 		expect(res.errors).toBeInstanceOf(Array)
 	})
 })

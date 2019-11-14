@@ -70,8 +70,8 @@ function gql(strings, ...values) {
     query += string + (values[i] || '')
   })
 
-  const returnFn = ({variables, token, locale, __debug}) => coverFetch.call(this, {query, variables, token, locale, __debug});
-  returnFn.withFieldErrorMapping = (errorLocation) => ({variables, token, locale, __debug}) => coverFetch({query, variables, token, locale, __debug, errorLocation: errorLocation || true})
+  const returnFn = ({variables, token, locale, options, __debug}) => coverFetch.call(this, {query, variables, token, locale, options, __debug});
+  returnFn.withFieldErrorMapping = (errorLocation) => ({variables, token, locale, options, __debug}) => coverFetch({query, variables, token, locale, options, __debug, errorLocation: errorLocation || true})
   return returnFn
 }
 

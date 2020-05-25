@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/CoverGo/sdk-js/compare/v2.1.7...v2.1.8) (2020-05-25)
+
+
+### Bug Fixes
+
+* **batchinitializepolicy:** add facts to policy ([e8bdef2](https://github.com/CoverGo/sdk-js/commit/e8bdef2))
+
 ## [2.1.7](https://github.com/CoverGo/sdk-js/compare/v2.1.6...v2.1.7) (2019-11-14)
 
 

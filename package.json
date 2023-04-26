@@ -80,7 +80,7 @@
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-size-snapshot": "^0.9.0",
     "rollup-plugin-terser": "^5.0.0",
-    "travis-deploy-once": "^4.4.1"
+    "travis-deploy-once": "^5.0.11"
   },
   "publishConfig": {
     "access": "public"
